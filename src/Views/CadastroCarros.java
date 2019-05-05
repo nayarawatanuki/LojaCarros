@@ -1,0 +1,305 @@
+package Views;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+
+import Model.Carros;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
+
+public class CadastroCarros {
+
+	JFrame frame;
+	private JTextField txtModelo;
+	private JTextField txtChassi;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CadastroCarros window = new CadastroCarros();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public CadastroCarros() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 306, 518);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panelCarro = new JPanel();
+		panelCarro.setBorder(new TitledBorder(null, "Carro", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		
+		JPanel panelDoc = new JPanel();
+		panelDoc.setBorder(new TitledBorder(null, "Documenta\u00E7\u00E3o", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		
+		JLabel lblChassi = new JLabel("Chassi:");
+		
+		txtChassi = new JTextField();
+		txtChassi.setColumns(10);
+		
+		JLabel lblPlaca = new JLabel("Placa:");
+		
+		JLabel lblKm = new JLabel("Km:");
+		
+		JLabel lblPreo = new JLabel("Preço:");
+		
+		JLabel lblCombustivel = new JLabel("Combustivel:");
+		
+		JComboBox cbCombustivel = new JComboBox();
+		cbCombustivel.setModel(new DefaultComboBoxModel(new String[] {null, "Flex", "Gasolina", "Diesel"}));
+		
+		
+		JFormattedTextField ftxtPreco = new JFormattedTextField();
+		
+		JFormattedTextField ftxtPlaca = new JFormattedTextField();
+		
+		JFormattedTextField ftxtKm = new JFormattedTextField();
+		
+		JLabel lblCidade = new JLabel("Cidade:");
+		
+		JComboBox cbCidade = new JComboBox();
+		
+		JLabel lblEstado = new JLabel("Estado:");
+		
+		JComboBox cbEstado = new JComboBox();
+		cbEstado.setModel(new DefaultComboBoxModel(new String[] {null, "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
+		
+		GroupLayout gl_panelDoc = new GroupLayout(panelDoc);
+		gl_panelDoc.setHorizontalGroup(
+			gl_panelDoc.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelDoc.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelDoc.createSequentialGroup()
+							.addComponent(lblCombustivel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+							.addGap(18))
+						.addGroup(gl_panelDoc.createSequentialGroup()
+							.addGroup(gl_panelDoc.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelDoc.createSequentialGroup()
+									.addComponent(lblChassi, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(gl_panelDoc.createSequentialGroup()
+									.addComponent(lblPlaca, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(gl_panelDoc.createSequentialGroup()
+									.addComponent(lblEstado, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addComponent(lblCidade, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+							.addGap(50))
+						.addGroup(gl_panelDoc.createSequentialGroup()
+							.addComponent(lblPreo, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+							.addGap(62))
+						.addGroup(gl_panelDoc.createSequentialGroup()
+							.addComponent(lblKm, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+							.addGap(71)))
+					.addGap(6)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panelDoc.createSequentialGroup()
+							.addGroup(gl_panelDoc.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelDoc.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_panelDoc.createSequentialGroup()
+										.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED))
+									.addGroup(gl_panelDoc.createSequentialGroup()
+										.addComponent(ftxtPlaca, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED))
+									.addGroup(gl_panelDoc.createSequentialGroup()
+										.addComponent(txtChassi, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED))
+									.addGroup(gl_panelDoc.createSequentialGroup()
+										.addComponent(ftxtKm, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED))
+									.addGroup(gl_panelDoc.createSequentialGroup()
+										.addComponent(ftxtPreco, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)))
+								.addComponent(cbCombustivel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+							.addGap(6))
+						.addGroup(gl_panelDoc.createSequentialGroup()
+							.addComponent(cbCidade, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
+		);
+		gl_panelDoc.setVerticalGroup(
+			gl_panelDoc.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelDoc.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCidade)
+						.addComponent(cbCidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblEstado)
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPlaca)
+						.addComponent(ftxtPlaca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblChassi)
+						.addComponent(txtChassi, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblKm)
+						.addComponent(ftxtKm, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPreo)
+						.addComponent(ftxtPreco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCombustivel)
+						.addComponent(cbCombustivel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(16, Short.MAX_VALUE))
+		);
+		panelDoc.setLayout(gl_panelDoc);
+		
+		JLabel lblModelo = new JLabel("Modelo:");
+		
+		txtModelo = new JTextField();
+		txtModelo.setColumns(10);
+		
+		JLabel lblMarca = new JLabel("Marca:");
+		
+		JLabel lblAno = new JLabel("Ano:");
+		
+		JComboBox cbMarca = new JComboBox();
+		
+		JFormattedTextField ftxtAno = new JFormattedTextField();
+		GroupLayout gl_panelCarro = new GroupLayout(panelCarro);
+		gl_panelCarro.setHorizontalGroup(
+			gl_panelCarro.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelCarro.createSequentialGroup()
+					.addContainerGap(35, Short.MAX_VALUE)
+					.addGroup(gl_panelCarro.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addComponent(lblModelo)
+							.addGap(6)
+							.addComponent(txtModelo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addComponent(lblMarca, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(cbMarca, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addComponent(lblAno, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(ftxtAno, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
+					.addGap(31))
+		);
+		gl_panelCarro.setVerticalGroup(
+			gl_panelCarro.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelCarro.createSequentialGroup()
+					.addGroup(gl_panelCarro.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addGap(5)
+							.addComponent(lblModelo))
+						.addComponent(txtModelo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(gl_panelCarro.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblMarca))
+						.addComponent(cbMarca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+					.addGroup(gl_panelCarro.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblAno)
+						.addComponent(ftxtAno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txtModelo.getText() == " " || cbMarca.getSelectedItem() == null || ftxtAno.getText() == " " || cbCidade.getSelectedItem() == null || cbEstado.getSelectedItem() == null || ftxtPlaca.getText() == " " || txtChassi.getText() == " " || ftxtKm.getText() == " " || ftxtPreco.getText() == " " || cbCombustivel.getSelectedItem() == null) {
+					JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos.");
+				}else {
+					new Carros(
+							txtModelo.getText(), 
+							cbMarca.getSelectedItem().toString(), 
+							ftxtAno.getText(), cbCidade.getSelectedItem().toString(), 
+							
+							cbEstado.getSelectedItem().toString(), 
+							ftxtPlaca.getText(), 
+							txtChassi.getText(), 
+							ftxtKm.getText(), 
+							Double.parseDouble(ftxtPreco.getText()), 
+							cbCombustivel.getSelectedItem().toString()
+					);
+					
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+				}
+			}
+		});
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnCancelar)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSalvar))
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+							.addGap(22)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(panelDoc, 0, 0, Short.MAX_VALUE)
+								.addComponent(panelCarro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(20, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(23)
+					.addComponent(panelCarro, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panelDoc, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnSalvar)
+						.addComponent(btnCancelar))
+					.addContainerGap(24, Short.MAX_VALUE))
+		);
+		
+		panelCarro.setLayout(gl_panelCarro);
+		frame.getContentPane().setLayout(groupLayout);
+	}
+}
