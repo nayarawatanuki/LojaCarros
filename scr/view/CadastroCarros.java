@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import java.awt.EventQueue;
 
@@ -8,7 +8,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import Model.Carros;
+import model.entities.Carros;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
