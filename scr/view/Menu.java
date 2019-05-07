@@ -84,14 +84,14 @@ public class Menu {
 				window.frame.setVisible(true);
 			}
 		});
-		btnCarros.setIcon(new ImageIcon("/Users/nayarawatanuki/eclipse-java/LojaCarros/img/IMG_0806-3.png"));
+		btnCarros.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/IMG_0806-3.png"));
 		
 		JButton btnCatalogo = new JButton("Catalogo (Carros em Oferta)");
 		btnCatalogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCatalogo.setIcon(new ImageIcon("/Users/nayarawatanuki/eclipse-java/LojaCarros/img/kisspng-catalog-computer-software-computer-icons-catalogue-5abfa706335165.4743407415225095742102-2.png"));
+		btnCatalogo.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/kisspng-catalog-computer-software-computer-icons-catalogue-5abfa706335165.4743407415225095742102-2.png"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
