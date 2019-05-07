@@ -5,7 +5,7 @@ public class Carros {
 	private int id;
 	private String modelo;
 	private String marca;
-	private int ano;
+	private String ano;
 	
 	private String cidade;
 	private String estado;
@@ -15,13 +15,10 @@ public class Carros {
 	private double preco;
 	private String combustivel;
 	
-	public Carros() {
-		
-	}
+	public Carros() {}
 
-	public Carros(String modelo, String marca, int ano, String cidade, String estado, String placa, String chassi,
+	public Carros(String modelo, String marca, String ano, String cidade, String estado, String placa, String chassi,
 			double km, double preco, String combustivel) {
-		super();
 		this.modelo = modelo;
 		this.marca = marca;
 		this.ano = ano;
@@ -33,6 +30,7 @@ public class Carros {
 		this.preco = preco;
 		this.combustivel = combustivel;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -57,11 +55,11 @@ public class Carros {
 		this.marca = marca;
 	}
 
-	public int getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
 

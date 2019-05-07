@@ -21,7 +21,7 @@ public class CarroDao {
 	
 			ps.setString(1, car.getModelo());
 			ps.setString(2, car.getMarca());
-			ps.setInt(3, car.getAno());
+			ps.setString(3, car.getAno());
 			ps.setString(4, car.getCidade());
 			ps.setString(5, car.getEstado());
 			ps.setString(6, car.getPlaca());
@@ -55,7 +55,7 @@ public class CarroDao {
 			ps.setInt(1, car.getId());
 			ps.setString(2, car.getModelo());
 			ps.setString(3, car.getMarca());
-			ps.setInt(4, car.getAno());
+			ps.setString(4, car.getAno());
 			ps.setString(5, car.getCidade());
 			ps.setString(6, car.getEstado());
 			ps.setString(7, car.getPlaca());
@@ -120,7 +120,7 @@ public class CarroDao {
 				car.setId(result.getInt("id"));
 				car.setModelo(result.getString("modelo"));
 				car.setMarca(result.getString("marca"));
-				car.setAno(result.getInt("ano"));
+				car.setAno(result.getString("ano"));
 				car.setCidade(result.getString("cidade"));
 				car.setEstado(result.getString("estado"));
 				car.setPlaca(result.getString("placa"));

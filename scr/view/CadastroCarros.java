@@ -247,12 +247,12 @@ public class CadastroCarros {
 					new Carros(
 							txtModelo.getText(), 
 							cbMarca.getSelectedItem().toString(), 
-							ftxtAno.getText(), cbCidade.getSelectedItem().toString(), 
-							
+							ftxtAno.getText(), 
+							cbCidade.getSelectedItem().toString(), 
 							cbEstado.getSelectedItem().toString(), 
 							ftxtPlaca.getText(), 
 							txtChassi.getText(), 
-							ftxtKm.getText(), 
+							Double.parseDouble(ftxtKm.getText()), 
 							Double.parseDouble(ftxtPreco.getText()), 
 							cbCombustivel.getSelectedItem().toString()
 					);
