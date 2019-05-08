@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry exported="true" kind="lib" path="scr/lib/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/nayarawatanuki/Downloads/jcalendar-1.1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

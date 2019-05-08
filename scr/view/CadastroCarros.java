@@ -20,6 +20,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import com.toedter.calendar.JYearChooser;
+
+import control.CarrosBLL;
 
 public class CadastroCarros {
 
@@ -196,7 +199,7 @@ public class CadastroCarros {
 		
 		JComboBox cbMarca = new JComboBox();
 		
-		JFormattedTextField ftxtAno = new JFormattedTextField();
+		JYearChooser yearChooser = new JYearChooser();
 		GroupLayout gl_panelCarro = new GroupLayout(panelCarro);
 		gl_panelCarro.setHorizontalGroup(
 			gl_panelCarro.createParallelGroup(Alignment.TRAILING)
@@ -212,9 +215,10 @@ public class CadastroCarros {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(cbMarca, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblAno, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(ftxtAno, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(yearChooser, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addGap(31))
 		);
 		gl_panelCarro.setVerticalGroup(
@@ -231,31 +235,36 @@ public class CadastroCarros {
 							.addGap(4)
 							.addComponent(lblMarca))
 						.addComponent(cbMarca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-					.addGroup(gl_panelCarro.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblAno)
-						.addComponent(ftxtAno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+					.addGroup(gl_panelCarro.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+							.addComponent(lblAno)
+							.addGap(16))
+						.addGroup(gl_panelCarro.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(yearChooser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(txtModelo.getText() == " " || cbMarca.getSelectedItem() == null || ftxtAno.getText() == " " || cbCidade.getSelectedItem() == null || cbEstado.getSelectedItem() == null || ftxtPlaca.getText() == " " || txtChassi.getText() == " " || ftxtKm.getText() == " " || ftxtPreco.getText() == " " || cbCombustivel.getSelectedItem() == null) {
+				if(txtModelo.getText() == " " || cbMarca.getSelectedItem() == null || yearChooser.equals(null)|| cbCidade.getSelectedItem() == null || cbEstado.getSelectedItem() == null || ftxtPlaca.getText() == " " || txtChassi.getText() == " " || ftxtKm.getText() == " " || ftxtPreco.getText() == " " || cbCombustivel.getSelectedItem() == null) {
 					JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos.");
 				}else {
-					new Carros(
+					
+					CarrosBLL car = new CarrosBLL();
+					car.insertCarros(new Carros(
 							txtModelo.getText(), 
 							cbMarca.getSelectedItem().toString(), 
-							ftxtAno.getText(), 
+							yearChooser.getValue(),
 							cbCidade.getSelectedItem().toString(), 
 							cbEstado.getSelectedItem().toString(), 
 							ftxtPlaca.getText(), 
 							txtChassi.getText(), 
 							Double.parseDouble(ftxtKm.getText()), 
 							Double.parseDouble(ftxtPreco.getText()), 
-							cbCombustivel.getSelectedItem().toString()
-					);
+							cbCombustivel.getSelectedItem().toString()));
 					
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 				}

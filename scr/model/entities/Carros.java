@@ -5,7 +5,7 @@ public class Carros {
 	private int id;
 	private String modelo;
 	private String marca;
-	private String ano;
+	private int ano;
 	
 	private String cidade;
 	private String estado;
@@ -17,7 +17,7 @@ public class Carros {
 	
 	public Carros() {}
 
-	public Carros(String modelo, String marca, String ano, String cidade, String estado, String placa, String chassi,
+	public Carros(String modelo, String marca, int ano, String cidade, String estado, String placa, String chassi,
 			double km, double preco, String combustivel) {
 		this.modelo = modelo;
 		this.marca = marca;
@@ -55,11 +55,11 @@ public class Carros {
 		this.marca = marca;
 	}
 
-	public String getAno() {
+	public int getAno() {
 		return ano;
 	}
 
-	public void setAno(String ano) {
+	public void setAno(int ano) {
 		this.ano = ano;
 	}
 

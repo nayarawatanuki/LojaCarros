@@ -10,9 +10,7 @@ public class MySqlConnection {
 			throws SQLException {
 		Connection connection = null;
 
-		connection = DriverManager.getConnection("jdbc:mysql://localhost/lojaCarros",
-				"root",
-				"");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost/lojaCarros", "root", "");
 
 		if (connection == null)
 			throw new SQLException("Connection class could not be created.");
