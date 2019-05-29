@@ -15,7 +15,7 @@ public class CarroDao {
 	try {
 		conn = MySqlConnection.getConnection();
 	
-		String query = "{call inserir_Carros(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}"; 
+		String query = "{call inserir_Carro(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}"; 
 	
 			ps = conn.prepareStatement(query);
 	
@@ -47,7 +47,7 @@ public class CarroDao {
 	
 		try {
 	
-			String query = "{call alterar_Carros(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}"; 
+			String query = "{call alterar_Carro(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}"; 
 	
 			conn = MySqlConnection.getConnection();
 			ps = conn.prepareStatement(query);		
@@ -79,7 +79,7 @@ public class CarroDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
-			String query = "{call excluir_Carros(?)}"; 
+			String query = "{call excluir_Carro(?)}"; 
 	
 		conn = MySqlConnection.getConnection();
 		ps = conn.prepareStatement(query);		
