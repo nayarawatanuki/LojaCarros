@@ -93,6 +93,7 @@ public class CadastroCarros {
 		JLabel lblCidade = new JLabel("Cidade:");
 		
 		JComboBox cbCidade = new JComboBox();
+		cbCidade.setModel(new DefaultComboBoxModel(new String[] {null, "Bragança Paulista", "São Paulo", "Atibaia", "Itatiba"} ));
 		
 		JLabel lblEstado = new JLabel("Estado:");
 		
@@ -198,6 +199,7 @@ public class CadastroCarros {
 		JLabel lblAno = new JLabel("Ano:");
 		
 		JComboBox cbMarca = new JComboBox();
+		cbMarca.setModel(new DefaultComboBoxModel(new String[] {null, "Volkswagen"}));
 		
 		JYearChooser yearChooser = new JYearChooser();
 		GroupLayout gl_panelCarro = new GroupLayout(panelCarro);

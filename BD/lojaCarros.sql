@@ -38,7 +38,7 @@ CREATE TABLE `carro` (
   `combustivel` varchar(25) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `carro` (
 
 LOCK TABLES `carro` WRITE;
 /*!40000 ALTER TABLE `carro` DISABLE KEYS */;
-INSERT INTO `carro` VALUES (1,'Gol','Volkswagen',2017,'São Paulo','SP','ABC1234','cha21',29357.9,30000,'Gasolina',1),(2,'Gol','',2017,'São Paulo','SP','ABC1234','bhfsd47',29357.9,30000,'Gasolina',0);
+INSERT INTO `carro` VALUES (1,'Gol','Volkswagen',2017,'São Paulo','SP','ABC1234','cha21',29357.9,30000,'Gasolina',1),(2,'Gol','',2017,'São Paulo','SP','ABC1234','bhfsd47',29357.9,30000,'Gasolina',0),(3,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,0),(4,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,1),(5,'Modelo Teste','Teste Marca',2016,'Bragança Paulista','SP','BLL7896','BJK4582',12457.89,23600,'Flex',1),(6,'Golf','Volkswagen',2017,'Bragança Paulista','SP','POI9876','768ab12',9635.2,35000,'Flex',1);
 /*!40000 ALTER TABLE `carro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,4 +259,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-29 13:14:44
+-- Dump completed on 2019-05-30 12:24:49
