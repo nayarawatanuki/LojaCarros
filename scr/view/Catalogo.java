@@ -10,6 +10,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ImageIcon;
 
 public class Catalogo {
 
@@ -43,50 +44,54 @@ public class Catalogo {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 530, 457);
+		frame.setBounds(100, 100, 875, 462);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton btnCarro1 = new JButton("Carro 1 - 50% off");
+		JButton btnCarro1 = new JButton("Fox - 50% off");
+		btnCarro1.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/volkswagen-fox-2018-2.jpg"));
 		btnCarro1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JButton btnCarro = new JButton("Carro 2 - 40% off");
+		JButton btnCarro = new JButton("Honda Fit - 40% off");
+		btnCarro.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/Honda-Fit-EX-2018-CVT-2.jpg"));
 		btnCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JButton btnCarro_1 = new JButton("Carro 3 - 20% off");
+		JButton btnCarro_1 = new JButton("Nissan Versa - 20% off");
+		btnCarro_1.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/2017-Nissan-Versa-01-2.jpg"));
 		
-		JButton btnCarro_2 = new JButton("Carro 4 - 10% off");
+		JButton btnCarro_2 = new JButton("Ford KA - 10% off");
+		btnCarro_2.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(89, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnCarro1)
-						.addComponent(btnCarro_1, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-					.addGap(84)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnCarro, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCarro_2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-					.addGap(51))
+					.addGap(39)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnCarro_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnCarro1, GroupLayout.PREFERRED_SIZE, 388, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnCarro_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnCarro, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+					.addGap(43))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(21)
+					.addGap(37)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCarro, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCarro1, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
-					.addGap(53)
+						.addComponent(btnCarro1, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCarro, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+					.addGap(37)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCarro_2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCarro_1, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(154, Short.MAX_VALUE))
+						.addComponent(btnCarro_1, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCarro_2, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(163, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
