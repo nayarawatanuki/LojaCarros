@@ -56,8 +56,13 @@ public class Catalogo {
 		JButton btnFordKa = new JButton("FORD KA - 40% off");
 		btnFordKa.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
 		
-		JButton btnFox = new JButton("FOX - 50% off");
-		btnFox.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/volkswagen-fox-2018-2.jpg"));
+		JButton btn50off = new JButton("FOX - 50% off");
+		btn50off.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/volkswagen-fox-2018-2.jpg"));
+		btn50off.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ContrapropostaCliente();
+			}
+		});
 		
 		JButton btnHondaFit = new JButton("HONDA FIT - 20% off");
 		btnHondaFit.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/Honda-Fit-EX-2018-CVT-2.jpg"));
@@ -66,7 +71,7 @@ public class Catalogo {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(98)
-					.addComponent(btnFox, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btn50off, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
 					.addGap(89)
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addComponent(btnNissanVersa, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -87,7 +92,7 @@ public class Catalogo {
 							.addComponent(btnNissanVersa, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED, 58, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnFox, GroupLayout.PREFERRED_SIZE, 391, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btn50off, GroupLayout.PREFERRED_SIZE, 391, GroupLayout.PREFERRED_SIZE)
 							.addGap(37)))
 					.addGap(17))
 		);
