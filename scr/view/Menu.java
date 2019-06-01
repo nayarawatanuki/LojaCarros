@@ -1,14 +1,8 @@
 package view;
 
 import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -35,8 +29,13 @@ public class Menu {
 		JMenuItem menuitemCarro = new JMenuItem("Carro");
 		menuitemCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new CadastroCarros();
-				frame.dispose();
+				try {
+					new CadastroCarros();
+					frame.dispose();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		});

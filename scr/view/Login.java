@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -45,6 +44,7 @@ public class Login {
 		
 		JPasswordField pwdSenha = new JPasswordField();
 		pwdSenha.addKeyListener(new KeyAdapter() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void keyPressed(KeyEvent evt) {
 				if (evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -71,7 +71,7 @@ public class Login {
 		pwdSenha.setBounds(94, 142, 212, 20);
 		frmLogin.getContentPane().add(pwdSenha);
 		
-		/** BOTÃO ENTRAR **/
+		/** BOTï¿½O ENTRAR **/
 		JButton btnEntrar = new JButton("ENTRAR");
 		
 		btnEntrar.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class Login {
 		btnEntrar.setBounds(94, 176, 87, 23);
 		frmLogin.getContentPane().add(btnEntrar);
 		
-		/** BOTÃO CANCELAR **/
+		/** BOTï¿½O CANCELAR **/
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			

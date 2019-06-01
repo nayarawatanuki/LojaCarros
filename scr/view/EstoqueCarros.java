@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class EstoqueCarros {
@@ -45,8 +46,14 @@ public class EstoqueCarros {
 		JButton btnCadastrar = new JButton("Novo");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroCarros();
-				frame.dispose();				
+				try {
+					new CadastroCarros();
+					frame.dispose();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+								
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

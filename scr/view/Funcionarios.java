@@ -6,12 +6,10 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.MaskFormatter;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
@@ -32,26 +30,7 @@ public class Funcionarios {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Usuario", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		
-		JLabel lblTipoDeAcesso = new JLabel("Tipo de acesso:");
-		
-		JFormattedTextField ftxtCpf = new JFormattedTextField();
-		try{
-			MaskFormatter cpf = new MaskFormatter("###.###.###-##");
-			
-		}catch (Exception e){
-		}
-		
-		JFormattedTextField ftxtTelefone = new JFormattedTextField();
-		try{
-			MaskFormatter tel = new MaskFormatter("(##) ####-####");
-			tel.setPlaceholderCharacter('_');
-			
-		}catch (Exception e){
-		}
-		
-		JComboBox cbAcesso = new JComboBox();
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Cadastro", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JLabel lblUsuario = new JLabel("usuario:");
 		
@@ -61,6 +40,10 @@ public class Funcionarios {
 		txtUser.setColumns(10);
 		
 		pwdSenha = new JPasswordField();
+		
+		JLabel lblTipoDeAcesso = new JLabel("Tipo de acesso:");
+		
+		JComboBox cbAcesso = new JComboBox();
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -118,19 +101,19 @@ public class Funcionarios {
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(25)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addGap(64)
 							.addComponent(btnVoltar)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
 							.addComponent(btnBuscar)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnSalvar)))
-					.addContainerGap(153, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnSalvar))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(43)
+							.addComponent(panel, 0, 0, Short.MAX_VALUE)))
+					.addGap(51))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -139,10 +122,10 @@ public class Funcionarios {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVoltar)
 						.addComponent(btnSalvar)
-						.addComponent(btnBuscar)
-						.addComponent(btnVoltar))
-					.addContainerGap(66, Short.MAX_VALUE))
+						.addComponent(btnBuscar))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		
