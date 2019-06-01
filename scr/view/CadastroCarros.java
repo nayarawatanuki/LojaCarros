@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import model.entities.Carros;
+import model.entities.Cidades;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,12 +19,13 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import com.toedter.calendar.JYearChooser;
 
-import br.edu.ifsp.bra.modelo.Medicamento.TipoMedicamento;
 import control.CarrosBLL;
+import control.CidadesBLL;
 
 public class CadastroCarros {
 
@@ -50,12 +52,12 @@ public class CadastroCarros {
 	/**
 	 * Create the application.
 	 */
-	public CadastroCarros() {
+	public CadastroCarros() throws SQLException {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frame. 
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -93,10 +95,11 @@ public class CadastroCarros {
 		
 		JLabel lblCidade = new JLabel("Cidade:");
 		
-		this.comboBox = new JComboBox<>();
-		comboBox.setModel(new DefaultComboBoxModel<>(TipoMedicamento.values()));
-		JComboBox cbCidade = new JComboBox<>();
-		cbCidade.setModel(new DefaultComboBoxModel<>(new String[] {null} ));
+		CidadesBLL cid = new CidadesBLL();
+		JComboBox<Cidades> cbCidade = new JComboBox<Cidades>();
+		for (Cidades c : cid.getTodasCidades()) {
+			cbCidade.addItem(c);
+		}
 		
 		JLabel lblEstado = new JLabel("Estado:");
 		

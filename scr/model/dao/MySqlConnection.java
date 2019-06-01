@@ -4,17 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import com.mysql.jdbc.Driver;
+
 public class MySqlConnection {
+	public static final String URL = "jdbc:mysql://localhost:3306/ifsp_farmacia?useSSL=false&useTimezone=true&serverTimezone=UTC";
+	public static final String USER = "root";
+	public static final String PASS = "secret18";
 
-	public static Connection getConnection()
-			throws SQLException {
-		Connection connection = null;
-
-		connection = DriverManager.getConnection("jdbc:mysql://localhost/lojacarros", "root", "");
-
-		if (connection == null)
-			throw new SQLException("Connection class could not be created.");
-
-		return connection;
+	public static Connection getConnection() {
+		try {
+			DriverManager.registerDriver(new Driver());
+			return DriverManager.getConnection(URL, USER, PASS);
+		} catch (SQLException ex) {
+			JOptionPane.showMessageDialog(new JFrame(), "Banco de Dados \n\n" + "\nErro ao conectar.", "Conexão", JOptionPane.INFORMATION_MESSAGE);
+			throw new RuntimeException(ex);
+		}
 	}
 }
+
