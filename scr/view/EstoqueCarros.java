@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -11,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class EstoqueCarros {
@@ -20,33 +18,7 @@ public class EstoqueCarros {
 	private JTextField txtBusca;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EstoqueCarros window = new EstoqueCarros();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public EstoqueCarros() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 594, 270);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,29 +32,21 @@ public class EstoqueCarros {
 		
 		table = new JTable();
 		
-		JButton btnVender = new JButton("Vender");
-		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				new Menu();
+				frame.dispose();				
 			}
 		});
 		
 		JButton btnEditar = new JButton("Editar");
 		
-		JButton btnCadastrar = new JButton("Cadastrar Novo");
+		JButton btnCadastrar = new JButton("Novo");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroCarros window;
-				try {
-					window = new CadastroCarros();
-					window.frame.setVisible(true);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+				new CadastroCarros();
+				frame.dispose();				
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -90,22 +54,21 @@ public class EstoqueCarros {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(30)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblCarro, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnBuscar))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnVoltar)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
 							.addComponent(btnEditar)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnCadastrar)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnVender))
-						.addComponent(table, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 529, GroupLayout.PREFERRED_SIZE))
+							.addGap(73))
+						.addComponent(table, GroupLayout.PREFERRED_SIZE, 529, GroupLayout.PREFERRED_SIZE))
 					.addGap(35))
 		);
 		groupLayout.setVerticalGroup(
@@ -123,12 +86,12 @@ public class EstoqueCarros {
 					.addComponent(table, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnVender)
 						.addComponent(btnCadastrar)
 						.addComponent(btnEditar)
 						.addComponent(btnVoltar))
-					.addContainerGap(11, Short.MAX_VALUE))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
+		frame.setVisible(true);
 	}
 }

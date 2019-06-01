@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Login {
 	
@@ -33,7 +35,7 @@ public class Login {
 		frmLogin.getContentPane().add(lblLogin);
 		
 		JTextField txtLogin = new JTextField();
-		txtLogin.setBounds(94, 114, 176, 20);
+		txtLogin.setBounds(94, 114, 212, 20);
 		frmLogin.getContentPane().add(txtLogin);
 		txtLogin.setColumns(10);
 		
@@ -42,20 +44,46 @@ public class Login {
 		frmLogin.getContentPane().add(lblSenha);
 		
 		JPasswordField pwdSenha = new JPasswordField();
-		pwdSenha.setBounds(94, 142, 176, 20);
+		pwdSenha.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent evt) {
+				if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+					Acesso acesso = new Acesso();				
+					
+					acesso.Logar(txtLogin.getText(), pwdSenha.getText());
+					
+					if(acesso.permissao == true) {
+											
+						new Menu();
+						frmLogin.dispose();
+					}
+					
+					if(acesso.permissao == false) {
+						txtLogin.setText("");
+						pwdSenha.setText("");
+						txtLogin.requestFocus();
+					}
+					
+					acesso.permissao = false;
+		        }
+			}
+		});
+		pwdSenha.setBounds(94, 142, 212, 20);
 		frmLogin.getContentPane().add(pwdSenha);
 		
 		/** BOTÃO ENTRAR **/
 		JButton btnEntrar = new JButton("ENTRAR");
+		
 		btnEntrar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Acesso acesso = new Acesso();
+				Acesso acesso = new Acesso();				
 				
 				acesso.Logar(txtLogin.getText(), pwdSenha.getText());
 				
 				if(acesso.permissao == true) {
+										
 					new Menu();
 					frmLogin.dispose();
 				}
@@ -69,20 +97,20 @@ public class Login {
 				acesso.permissao = false;
 			}
 		});
-		btnEntrar.setBounds(94, 176, 73, 23);
+		btnEntrar.setBounds(94, 176, 87, 23);
 		frmLogin.getContentPane().add(btnEntrar);
 		
 		/** BOTÃO CANCELAR **/
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(new ActionListener() {
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 			
 		});
-		btnCancelar.setBounds(177, 176, 101, 23);
-		frmLogin.getContentPane().add(btnCancelar);
+		btnSair.setBounds(205, 176, 101, 23);
+		frmLogin.getContentPane().add(btnSair);
 		
 		JLabel lblFarmcia = new JLabel("Loja de Carros");
 		lblFarmcia.setForeground(new Color(0, 128, 0));
@@ -95,6 +123,11 @@ public class Login {
 		label.setIcon(new ImageIcon(Login.class.getResource("")));
 		label.setBounds(31, 171, 107, 122);
 		frmLogin.getContentPane().add(label);
+		
+		JLabel lblUseATecla = new JLabel("use a tecla ENTER para entrar ou o bot\u00E3o");
+		lblUseATecla.setForeground(Color.RED);
+		lblUseATecla.setBounds(94, 162, 275, 14);
+		frmLogin.getContentPane().add(lblUseATecla);
 		
 		frmLogin.setVisible(true);
 		}

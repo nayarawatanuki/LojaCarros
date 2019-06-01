@@ -10,6 +10,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
 
 
 public class Menu {
@@ -21,71 +26,57 @@ public class Menu {
 		frame.setBounds(100, 100, 321, 298);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Loja", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
 		
-		JButton btnSair = new JButton("SAIR");
-		btnSair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+		JMenu menuCadastro = new JMenu("Cadastro");
+		menuBar.add(menuCadastro);
+		
+		JMenuItem menuitemCarro = new JMenuItem("Carro");
+		menuitemCarro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new CadastroCarros();
+				frame.dispose();
+				
 			}
 		});
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(26, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnSair)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE))
-					.addGap(34))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(32)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnSair)
-					.addContainerGap(14, Short.MAX_VALUE))
-		);
+		menuCadastro.add(menuitemCarro);
 		
-		JButton btnCarros = new JButton("Carros");
-		btnCarros.addActionListener(new ActionListener() {
+		JMenuItem mntmUsuario = new JMenuItem("Usuario");
+		mntmUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EstoqueCarros window = new EstoqueCarros();
-				window.frame.setVisible(true);
+				new Funcionarios();
+				frame.dispose();
 			}
 		});
-		btnCarros.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/IMG_0806-3.png"));
+		menuCadastro.add(mntmUsuario);
 		
-		JButton btnCatalogo = new JButton("Catalogo (Carros em Oferta)");
-		btnCatalogo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+				JMenu menu = new JMenu("|");
+				menuBar.add(menu);
+		
+		JMenu menuEstoque = new JMenu("Estoque");
+		menuBar.add(menuEstoque);
+		
+		JMenuItem menuitemEstoqueDeCarros = new JMenuItem("Estoque de Carros");
+		menuitemEstoqueDeCarros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new EstoqueCarros();				
+				frame.dispose();
 			}
 		});
-		btnCatalogo.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/kisspng-catalog-computer-software-computer-icons-catalogue-5abfa706335165.4743407415225095742102-2.png"));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnCarros, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCatalogo, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(15)
-					.addComponent(btnCarros)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCatalogo)
-					.addContainerGap(94, Short.MAX_VALUE))
-		);
-		panel.setLayout(gl_panel);
-		frame.getContentPane().setLayout(groupLayout);
+		menuEstoque.add(menuitemEstoqueDeCarros);
+		
+		JMenuItem mntmCatalogo = new JMenuItem("Catalogo");
+		mntmCatalogo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Catalogo();
+				frame.dispose();
+			}
+		});
+		menuEstoque.add(mntmCatalogo);
+		
+		JLabel lblUsuario = new JLabel("Bem Vindo ao Sistema!");
+		frame.getContentPane().add(lblUsuario, BorderLayout.SOUTH);
 		
 		frame.setVisible(true);
 	}
