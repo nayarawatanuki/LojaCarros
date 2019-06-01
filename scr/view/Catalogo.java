@@ -48,24 +48,24 @@ public class Catalogo {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnCarro1 = new JButton("Fox - 50% off");
-		btnCarro1.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/volkswagen-fox-2018-2.jpg"));
+		btnCarro1.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/volkswagen-fox-2018-2.jpg"));
 		btnCarro1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		JButton btnCarro = new JButton("Honda Fit - 40% off");
-		btnCarro.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/Honda-Fit-EX-2018-CVT-2.jpg"));
+		btnCarro.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/Honda-Fit-EX-2018-CVT-2.jpg"));
 		btnCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		JButton btnCarro_1 = new JButton("Nissan Versa - 20% off");
-		btnCarro_1.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/2017-Nissan-Versa-01-2.jpg"));
+		btnCarro_1.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/2017-Nissan-Versa-01-2.jpg"));
 		
 		JButton btnCarro_2 = new JButton("Ford KA - 10% off");
-		btnCarro_2.setIcon(new ImageIcon("/Users/nayarawatanuki/Downloads/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
+		btnCarro_2.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

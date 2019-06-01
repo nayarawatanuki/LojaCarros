@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import com.toedter.calendar.JYearChooser;
 
+import br.edu.ifsp.bra.modelo.Medicamento.TipoMedicamento;
 import control.CarrosBLL;
 
 public class CadastroCarros {
@@ -92,8 +93,10 @@ public class CadastroCarros {
 		
 		JLabel lblCidade = new JLabel("Cidade:");
 		
-		JComboBox cbCidade = new JComboBox();
-		cbCidade.setModel(new DefaultComboBoxModel(new String[] {null} ));
+		this.comboBox = new JComboBox<>();
+		comboBox.setModel(new DefaultComboBoxModel<>(TipoMedicamento.values()));
+		JComboBox cbCidade = new JComboBox<>();
+		cbCidade.setModel(new DefaultComboBoxModel<>(new String[] {null} ));
 		
 		JLabel lblEstado = new JLabel("Estado:");
 		
