@@ -42,6 +42,6 @@ public class Cidades {
 	
 	@Override
 	public String toString() {
-		return "" + cidade + ", " + uf + "";
+		return "" + cidade + "";
 	}
 }

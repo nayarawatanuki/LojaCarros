@@ -21,12 +21,13 @@ public class Acesso {
 			
 			comando.setString(1, login);
 			comando.setString(2, senha);
-			
+						
 			ResultSet resultado = comando.executeQuery();
 
 			if (resultado.next()) {
-				JOptionPane.showMessageDialog(null, "Acesso permitido");
+
 				permissao = true;
+				
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "login ou senha incorreta");

@@ -93,18 +93,34 @@ public class CadastroCarros {
 		
 		JFormattedTextField ftxtKm = new JFormattedTextField();
 		
+		JLabel lblEstado = new JLabel("Estado:");
+		
+		
+		JComboBox<Cidades> cbEstado = new JComboBox<Cidades>();
+		cbEstado.setModel(new DefaultComboBoxModel(new String[] {null, "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
+		
 		JLabel lblCidade = new JLabel("Cidade:");
 		
 		CidadesBLL cid = new CidadesBLL();
 		JComboBox<Cidades> cbCidade = new JComboBox<Cidades>();
-		for (Cidades c : cid.getTodasCidades()) {
-			cbCidade.addItem(c);
+		cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+		String estado = cbEstado.getSelectedItem().toString();
+		switch (estado) {
+		  case "AC":
+			for (Cidades c : cid.getACCidades()) {
+				cbEstado.addItem(c);
+			}
+		    break;
+		  case "SP":
+			for (Cidades c : cid.getSPCidades()) {
+				cbEstado.addItem(c);
+			}
+		    break;
+		  case "":
+			cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+		    break;
 		}
 		
-		JLabel lblEstado = new JLabel("Estado:");
-		
-		JComboBox cbEstado = new JComboBox();
-		cbEstado.setModel(new DefaultComboBoxModel(new String[] {null, "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
 		
 		GroupLayout gl_panelDoc = new GroupLayout(panelDoc);
 		gl_panelDoc.setHorizontalGroup(
@@ -124,9 +140,9 @@ public class CadastroCarros {
 									.addComponent(lblPlaca, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED))
 								.addGroup(gl_panelDoc.createSequentialGroup()
-									.addComponent(lblEstado, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+									.addComponent(lblCidade, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED))
-								.addComponent(lblCidade, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+								.addComponent(lblEstado, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
 							.addGap(50))
 						.addGroup(gl_panelDoc.createSequentialGroup()
 							.addComponent(lblPreo, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
@@ -140,7 +156,7 @@ public class CadastroCarros {
 							.addGroup(gl_panelDoc.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panelDoc.createParallelGroup(Alignment.TRAILING)
 									.addGroup(gl_panelDoc.createSequentialGroup()
-										.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+										.addComponent(cbCidade, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(ComponentPlacement.RELATED))
 									.addGroup(gl_panelDoc.createSequentialGroup()
 										.addComponent(ftxtPlaca, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
@@ -157,7 +173,7 @@ public class CadastroCarros {
 								.addComponent(cbCombustivel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
 							.addGap(6))
 						.addGroup(gl_panelDoc.createSequentialGroup()
-							.addComponent(cbCidade, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+							.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 		);
 		gl_panelDoc.setVerticalGroup(
@@ -165,12 +181,12 @@ public class CadastroCarros {
 				.addGroup(gl_panelDoc.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCidade)
-						.addComponent(cbCidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEstado)
 						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCidade)
+						.addComponent(cbCidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panelDoc.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPlaca)
@@ -257,7 +273,7 @@ public class CadastroCarros {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(txtModelo.getText() == " " || cbMarca.getSelectedItem() == null || yearChooser.equals(null)|| cbCidade.getSelectedItem() == null || cbEstado.getSelectedItem() == null || ftxtPlaca.getText() == " " || txtChassi.getText() == " " || ftxtKm.getText() == " " || ftxtPreco.getText() == " " || cbCombustivel.getSelectedItem() == null) {
+				if(txtModelo.getText() == " " || cbMarca.getSelectedItem() == null || yearChooser.equals(null)|| cbEstado.getSelectedItem() == null || cbCidade.getSelectedItem() == null || ftxtPlaca.getText() == " " || txtChassi.getText() == " " || ftxtKm.getText() == " " || ftxtPreco.getText() == " " || cbCombustivel.getSelectedItem() == null) {
 					JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos.");
 				}else {
 					
@@ -266,8 +282,8 @@ public class CadastroCarros {
 							txtModelo.getText(), 
 							cbMarca.getSelectedItem().toString(), 
 							yearChooser.getValue(),
-							cbCidade.getSelectedItem().toString(), 
 							cbEstado.getSelectedItem().toString(), 
+							cbCidade.getSelectedItem().toString(), 
 							ftxtPlaca.getText(), 
 							txtChassi.getText(), 
 							Double.parseDouble(ftxtKm.getText()), 

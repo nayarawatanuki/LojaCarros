@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class EstoqueCarros {
@@ -73,8 +74,15 @@ public class EstoqueCarros {
 		JButton btnCadastrar = new JButton("Cadastrar Novo");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroCarros window = new CadastroCarros();
-				window.frame.setVisible(true);
+				CadastroCarros window;
+				try {
+					window = new CadastroCarros();
+					window.frame.setVisible(true);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
