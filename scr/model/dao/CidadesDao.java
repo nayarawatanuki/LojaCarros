@@ -474,7 +474,7 @@ public class CidadesDao {
 		Cidades cid = new Cidades();
 		cid.setId(rs.getInt("id"));
 		cid.setCodigo(rs.getInt("codigo"));
-		cid.setCidade(rs.getString("cidade"));
+		cid.setCidade(rs.getString("nome"));
 		cid.setUf(rs.getString("uf"));
 		return cid;
 	}
