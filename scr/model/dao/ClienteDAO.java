@@ -110,7 +110,6 @@ public class ClienteDAO {
 					cli.setClinome(result.getString("clinome"));
 					cli.setClitelefone(result.getString("clitelefone"));
 					cli.setCliemail(result.getString("cliemail"));
-					cli.setClisenha(result.getString("clisenha"));
 					
 					listCliente.add(cli);
 				}
@@ -125,7 +124,7 @@ public class ClienteDAO {
 		
 		}
 		
-		public ArrayList<Cliente> selectCarros() throws SQLException {
+		public ArrayList<Cliente> selectCliente() throws SQLException {
 			return selectCliente("");
 		}
 

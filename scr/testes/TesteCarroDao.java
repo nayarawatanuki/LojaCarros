@@ -9,7 +9,7 @@ public class TesteCarroDao {
 		Carros carro = new Carros();
 		CarrosBLL ctrl = new CarrosBLL();
 		
-		carro.setModelo("Modelo Teste");
+		/*carro.setModelo("Modelo Teste");
 		carro.setAno(2016);
 		carro.setChassi("BJK4582");
 		carro.setCidade("Bragança Paulista");
@@ -18,7 +18,7 @@ public class TesteCarroDao {
 		carro.setKm(12457.89);
 		carro.setMarca("Teste Marca");
 		carro.setPlaca("BLL7896");
-		carro.setPreco(23600);
+		carro.setPreco(23600);*/
 		
 		/*ctrl.insertCarros(carro);
 		
@@ -30,9 +30,12 @@ public class TesteCarroDao {
 		
 		ctrl.selectCarros("");*/
 		
-		carro.setId(3);
+		/*carro.setId(3);
 		
-		ctrl.deleteCarros(carro);
+		ctrl.deleteCarros(carro);*/
+		
+		ctrl.selectCarrosPromo("Flex");
+		
 	}
 
 }

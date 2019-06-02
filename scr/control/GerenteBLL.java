@@ -9,19 +9,50 @@ public class GerenteBLL {
 	GerenteDAO cd = new GerenteDAO();
 
 	
-	public boolean adicionar(Gerente Gerente) throws SQLException {
-		return cd.insertGerente(Gerente);
+	public boolean insertGerente(Gerente gerente) throws SQLException {
+		try {
+					return cd.insertGerente(gerente);
+			
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			return false;
 	}
 	
-	public boolean excluir(Gerente Gerente) throws SQLException {
-		return cd.deleteGerente(Gerente);
+	public boolean deleteGerente(Gerente gerente) throws SQLException {
+		try {
+			return cd.deleteGerente(gerente);
+	
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
+	
 	}
 	
-	public boolean alterar(Gerente Gerente) throws SQLException {
-		return cd.updateGerente(Gerente);
+	public boolean updateGerente(Gerente gerente) throws SQLException {
+		try {
+			return cd.updateGerente(gerente);
+	
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
+		
 	}
 	
-	public ArrayList<Gerente> buscar(String filtro) throws SQLException{
-		return cd.selectGerente(filtro);
+	public ArrayList<Gerente> selectGerente(String filtro) throws SQLException{
+		try {
+			return cd.selectGerente(filtro);
+	
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 }

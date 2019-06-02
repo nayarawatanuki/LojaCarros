@@ -118,7 +118,7 @@ public class GerenteDAO {
 		
 		}
 		
-		public ArrayList<Gerente> selectCarros() throws SQLException {
+		public ArrayList<Gerente> selectGerente() throws SQLException {
 			return selectGerente("");
 		}
 
