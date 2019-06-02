@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.dao.GerenteDAO;
 import model.entities.Gerente;
 
-public class GerenteControl {
+public class GerenteBLL {
 	GerenteDAO cd = new GerenteDAO();
 
 	

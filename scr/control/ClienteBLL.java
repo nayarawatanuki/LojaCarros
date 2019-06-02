@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.dao.ClienteDAO;
 import model.entities.Cliente;
 
-public class ClienteControl {
+public class ClienteBLL {
 
 	ClienteDAO cd = new ClienteDAO();
 
