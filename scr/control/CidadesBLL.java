@@ -33,6 +33,10 @@ public class CidadesBLL implements ICidades{
 		return dao.getCECidades();
 	}
 	
+	public List<Cidades> getDFCidades() {
+		return dao.getDFCidades();
+	}
+	
 	public List<Cidades> getESCidades() {
 		return dao.getESCidades();
 	}

@@ -18,6 +18,8 @@ public interface ICidades {
 	
 	public List<Cidades> getCECidades();
 	
+	public List<Cidades> getDFCidades();
+	
 	public List<Cidades> getESCidades();
 	
 	public List<Cidades> getGOCidades();

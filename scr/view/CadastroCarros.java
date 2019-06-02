@@ -96,30 +96,157 @@ public class CadastroCarros {
 		JLabel lblEstado = new JLabel("Estado:");
 		
 		
-		JComboBox<Cidades> cbEstado = new JComboBox<Cidades>();
+		JComboBox cbEstado = new JComboBox();
+		
 		cbEstado.setModel(new DefaultComboBoxModel(new String[] {null, "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
 		
 		JLabel lblCidade = new JLabel("Cidade:");
 		
 		CidadesBLL cid = new CidadesBLL();
 		JComboBox<Cidades> cbCidade = new JComboBox<Cidades>();
-		cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
-		String estado = cbEstado.getSelectedItem().toString();
-		switch (estado) {
-		  case "AC":
-			for (Cidades c : cid.getACCidades()) {
-				cbEstado.addItem(c);
+		
+		cbEstado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cbEstado.getSelectedItem().toString() == "AC") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getACCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "AL") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getALCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "AP") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getAPCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "AM") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getAMCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "BA") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getBACidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "CE") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getCECidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "DF") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getDFCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "ES") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getESCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "GO") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getGOCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "MA") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getMACidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "MT") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getMTCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "MS") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getMSCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "MG") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getMGCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "PA") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getPACidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "PB") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getPBCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "PE") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getPECidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "PI") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getPICidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "PR") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getPRCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "RJ") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getRJCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "RN") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getRNCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "RS") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getRSCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "RO") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getROCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "RR") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getRRCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "SC") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getSCCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "SE") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getSECidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "SP") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getSPCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else if(cbEstado.getSelectedItem().toString() == "TO") {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+					for (Cidades c : cid.getTOCidades()) {
+						cbCidade.addItem(c);
+					}
+				}else {
+					cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
+				}
 			}
-		    break;
-		  case "SP":
-			for (Cidades c : cid.getSPCidades()) {
-				cbEstado.addItem(c);
-			}
-		    break;
-		  case "":
-			cbCidade.setModel(new DefaultComboBoxModel(new String[] {null}));
-		    break;
-		}
+		});
 		
 		
 		GroupLayout gl_panelDoc = new GroupLayout(panelDoc);

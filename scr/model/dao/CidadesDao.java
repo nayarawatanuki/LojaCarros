@@ -113,6 +113,23 @@ public class CidadesDao {
 		return null;
 	}
 	
+	public List<Cidades> getDFCidades() {
+		Connection connection = MySqlConnection.getConnection();
+		try {
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM lojacarros.municipio WHERE uf='DF'");
+			List<Cidades> cidades = new ArrayList<Cidades>();
+			while(rs.next()) {
+				Cidades cid = toCidades(rs);
+				cidades.add(cid);
+			}
+			return cidades;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<Cidades> getESCidades() {
 		Connection connection = MySqlConnection.getConnection();
 		try {
