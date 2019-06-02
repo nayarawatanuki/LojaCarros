@@ -16,6 +16,10 @@ import javax.swing.JFormattedTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Cliente {
 
@@ -50,7 +54,7 @@ public class Cliente {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 353);
+		frame.setBounds(100, 100, 450, 394);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -145,12 +149,34 @@ public class Cliente {
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(ftxtCpf.getText() == null | txtNome.getText() == null | ftxtTelefone.getText() == null | ftxtEmail.getText() == null) {
+					JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos.");
+				}else {
+					new Cliente();
+				}
+			}
+		});
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		
+		JButton btnLimparTudo = new JButton("Limpar Tudo");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(21)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 407, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnLimparTudo)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnCancelar)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSalvar))
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 407, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -158,6 +184,11 @@ public class Cliente {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(17)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnSalvar)
+						.addComponent(btnCancelar)
+						.addComponent(btnLimparTudo))
 					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
