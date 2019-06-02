@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `lojacarros` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+CREATE DATABASE  IF NOT EXISTS `lojacarros` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `lojacarros`;
--- MySQL dump 10.13  Distrib 8.0.13, for macos10.14 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
 -- Host: localhost    Database: lojacarros
 -- ------------------------------------------------------
--- Server version	8.0.13
+-- Server version	8.0.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,6 +37,7 @@ CREATE TABLE `carro` (
   `preco` double DEFAULT NULL,
   `combustivel` varchar(25) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT '1',
+  `promocao` tinyint(1) DEFAULT '0', 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,7 +48,7 @@ CREATE TABLE `carro` (
 
 LOCK TABLES `carro` WRITE;
 /*!40000 ALTER TABLE `carro` DISABLE KEYS */;
-INSERT INTO `carro` VALUES (1,'Gol','Volkswagen',2017,'São Paulo','SP','ABC1234','cha21',29357.9,30000,'Gasolina',1),(2,'Gol','',2017,'São Paulo','SP','ABC1234','bhfsd47',29357.9,30000,'Gasolina',0),(3,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,0),(4,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,1),(5,'Modelo Teste','Teste Marca',2016,'Bragança Paulista','SP','BLL7896','BJK4582',12457.89,23600,'Flex',1),(6,'Golf','Volkswagen',2017,'Bragança Paulista','SP','POI9876','768ab12',9635.2,35000,'Flex',1);
+INSERT INTO `carro` VALUES (1,'Gol','Volkswagen',2017,'São Paulo','SP','ABC1234','cha21',29357.9,30000,'Gasolina',1, 1),(2,'Gol','',2017,'São Paulo','SP','ABC1234','bhfsd47',29357.9,30000,'Gasolina',0, 0),(3,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,0, 0),(4,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,1, 0),(5,'Modelo Teste','Teste Marca',2016,'Bragança Paulista','SP','BLL7896','BJK4582',12457.89,23600,'Flex',1, 1),(6,'Golf','Volkswagen',2017,'Bragança Paulista','SP','POI9876','768ab12',9635.2,35000,'Flex',1, 0);
 /*!40000 ALTER TABLE `carro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +120,7 @@ CREATE TABLE `gerente` (
   `gerid` int(11) NOT NULL AUTO_INCREMENT,
   `gernome` varchar(50) DEFAULT NULL,
   `gerregistro` varchar(20) DEFAULT NULL,
-  `ativo` tinyint(1) DEFAULT NULL,
+  `ativo` tinyint(1) DEFAULT NULL
   PRIMARY KEY (`gerid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -172,7 +173,7 @@ DROP TABLE IF EXISTS `municipio`;
 CREATE TABLE `municipio` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Codigo` int(11) NOT NULL,
-  `Cidade` varchar(255) NOT NULL,
+  `Nome` varchar(255) NOT NULL,
   `Uf` char(2) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -189,8 +190,33 @@ INSERT INTO `municipio` VALUES (1,1100015,'Alta Floresta D\'Oeste','RO'),(2,1100
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'lojacarros'
+-- Table structure for table `usuario`
 --
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `idGerente` int not null,
+  PRIMARY KEY (`idUsuario`),
+  KEY `idGerente` (`idGerente`),
+  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idGerente`) REFERENCES `gerente` (`gerid`),
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'gerente','123', 1),(2,'funcionario','123', 3);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 --
 -- Dumping routines for database 'lojacarros'
@@ -307,6 +333,41 @@ BEGIN
 	END IF;
 END ;;
 DELIMITER ;
+
+/*!50003 DROP PROCEDURE IF EXISTS `buscar_Carros_Promo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_Carros_Promo`(IN filter varchar(45))
+BEGIN
+    IF filter LIKE '' THEN
+		SELECT id, modelo, marca, ano, cidade, estado, placa, chassi, km, preco, combustivel 
+			FROM carro 
+				WHERE ativo IS TRUE and promocao IS TRUE;
+	ELSE
+		SELECT id, modelo, marca, ano, cidade, estado, placa, chassi, km, preco, combustivel
+			FROM carro
+				WHERE 
+					(modelo LIKE CONCAT('%', filter,'%') OR
+					marca LIKE CONCAT('%', filter,'%') OR
+					ano LIKE CONCAT('%', filter,'%') OR
+					cidade LIKE CONCAT('%', filter,'%') OR
+					estado LIKE CONCAT('%', filter,'%') OR
+					placa LIKE CONCAT('%', filter,'%') OR
+					chassi LIKE CONCAT('%', filter,'%') OR
+					km LIKE CONCAT('%', filter,'%') OR
+					preco LIKE CONCAT('%', filter,'%') OR
+					combustivel LIKE CONCAT('%', filter,'%')) AND ativo IS TRUE AND promocao IS TRUE;
+	END IF;
+END ;;
+DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -508,4 +569,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-01 21:06:22
+-- Dump completed on 2019-05-31 13:19:21
