@@ -65,16 +65,15 @@ public class EstoqueCarros {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblCarro, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnBuscar))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnVoltar)
-							.addPreferredGap(ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
 							.addComponent(btnEditar)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnCadastrar)
-							.addGap(73))
+							.addComponent(btnCadastrar))
 						.addComponent(table, GroupLayout.PREFERRED_SIZE, 529, GroupLayout.PREFERRED_SIZE))
 					.addGap(35))
 		);
@@ -93,10 +92,10 @@ public class EstoqueCarros {
 					.addComponent(table, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVoltar)
 						.addComponent(btnCadastrar)
-						.addComponent(btnEditar)
-						.addComponent(btnVoltar))
-					.addContainerGap(14, Short.MAX_VALUE))
+						.addComponent(btnEditar))
+					.addContainerGap(18, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setVisible(true);
