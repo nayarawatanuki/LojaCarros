@@ -1,30 +1,35 @@
 package view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.MaskFormatter;
-import javax.swing.border.EtchedBorder;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import control.ClienteBLL;
+import model.entities.Cliente;
 
-public class Cliente {
+public class CadastroCliente {
 
 	private JFrame frame;
 	private JTextField txtNome;
+	private JFormattedTextField ftxtTelefone;
+	private JPasswordField pwdSenha;
 
 	/**
 	 * Launch the application.
@@ -33,7 +38,7 @@ public class Cliente {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cliente window = new Cliente();
+					CadastroCliente window = new CadastroCliente();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +50,7 @@ public class Cliente {
 	/**
 	 * Create the application.
 	 */
-	public Cliente() {
+	public CadastroCliente() {
 		initialize();
 	}
 
@@ -58,19 +63,16 @@ public class Cliente {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "CadastroCliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JLabel lblNome = new JLabel("Nome:");
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		
-		JLabel lblCpf = new JLabel("CPF:");
-		
 		txtNome = new JTextField();
 		txtNome.setColumns(10);
 		
 		
-		JFormattedTextField ftxtTelefone = new JFormattedTextField();
 		try{
 			MaskFormatter tel = new MaskFormatter("(##) ####-####");
 			ftxtTelefone = new JFormattedTextField(tel);
@@ -78,15 +80,11 @@ public class Cliente {
 		}catch (Exception e){
 		}
 		
-		JFormattedTextField ftxtCpf = new JFormattedTextField();
-		try{
-			MaskFormatter cpf = new MaskFormatter("###.###.###-##");
-			ftxtCpf = new JFormattedTextField(cpf);
-			
-		}catch (Exception e){
-		}
-		
 		JLabel lblEmail = new JLabel("E-mail:");
+		
+		JLabel lblSenha = new JLabel("Senha:");
+		
+		pwdSenha = new JPasswordField();
 		
 		JFormattedTextField ftxtEmail = new JFormattedTextField();
 		
@@ -95,40 +93,38 @@ public class Cliente {
 		JButton btnBuscar = new JButton("buscar");
 		
 		JList list = new JList();
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(20)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(list, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblCarros, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnBuscar))
+							.addComponent(lblSenha, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(pwdSenha))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNome)
 								.addComponent(lblTelefone)
-								.addComponent(lblCpf, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblEmail))
 							.addGap(10)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(ftxtEmail, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(txtNome, 276, 276, Short.MAX_VALUE)
-									.addComponent(ftxtCpf, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-									.addComponent(ftxtTelefone)))))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(ftxtEmail, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+								.addComponent(txtNome, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+								.addComponent(ftxtTelefone)))
+						.addComponent(list, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblCarros, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnBuscar)))
 					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCpf)
-						.addComponent(ftxtCpf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNome)
 						.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -140,28 +136,45 @@ public class Cliente {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEmail)
 						.addComponent(ftxtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblSenha)
+						.addComponent(pwdSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(12)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCarros)
 						.addComponent(btnBuscar))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(list, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+					.addComponent(list, GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				if(ftxtCpf.getText() == null | txtNome.getText() == null | ftxtTelefone.getText() == null | ftxtEmail.getText() == null) {
+				if(txtNome.getText() == null | ftxtTelefone.getText() == null | ftxtEmail.getText() == null | pwdSenha.getText() == null) {
 					JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos.");
 				}else {
-					new Cliente();
+					ClienteBLL cli = new ClienteBLL();
+					cli.insertCliente(new Cliente(
+							txtNome.getText().toString(), 
+							ftxtTelefone.getText(), 
+							ftxtEmail.getText(), 
+							pwdSenha.getText().toString()));
+					
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 				}
 			}
 		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		
 		JButton btnLimparTudo = new JButton("Limpar Tudo");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

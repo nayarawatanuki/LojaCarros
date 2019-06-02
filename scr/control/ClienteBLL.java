@@ -7,22 +7,58 @@ import model.entities.Cliente;
 
 public class ClienteBLL {
 
-	ClienteDAO cd = new ClienteDAO();
-
+	ClienteDAO dao = new ClienteDAO();
 	
-	public boolean adicionar(Cliente cliente) throws SQLException {
-		return cd.insertCliente(cliente);
+	public boolean insertCliente(Cliente cli) {
+		
+		try {
+			
+			return dao.insertCliente(cli);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
+	}
+		
+	public boolean updateCliente(Cliente cli) {
+		
+		try {
+			
+			return dao.updateCliente(cli);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
-	public boolean excluir(Cliente cliente) throws SQLException {
-		return cd.deleteCliente(cliente);
+	public boolean deleteCliente(Cliente cli) {
+		
+		try {
+			
+			return dao.deleteCliente(cli);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
-	public boolean alterar(Cliente cliente) throws SQLException {
-		return cd.updateCliente(cliente);
-	}
+	public ArrayList<Cliente> selectCliente(String filter) {
+		
+		try {
+			
+			return dao.selectCliente(filter);
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
 	
-	public ArrayList<Cliente> buscar(String filtro) throws SQLException{
-		return cd.selectCliente(filtro);
 	}
 }
