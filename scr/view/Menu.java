@@ -2,7 +2,6 @@ package view;
 
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -28,14 +27,9 @@ public class Menu {
 		
 		JMenuItem menuitemCarro = new JMenuItem("Carro");
 		menuitemCarro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					new CadastroCarros();
-					frame.dispose();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			public void actionPerformed(ActionEvent e) {
+				new CadastroCarros();
+				frame.dispose();
 				
 			}
 		});
@@ -58,7 +52,7 @@ public class Menu {
 		
 		JMenuItem menuitemEstoqueDeCarros = new JMenuItem("Estoque de Carros");
 		menuitemEstoqueDeCarros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new EstoqueCarros();				
 				frame.dispose();
 			}

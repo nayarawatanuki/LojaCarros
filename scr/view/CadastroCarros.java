@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -19,7 +17,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import com.toedter.calendar.JYearChooser;
@@ -32,34 +29,9 @@ public class CadastroCarros {
 	JFrame frame;
 	private JTextField txtModelo;
 	private JTextField txtChassi;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroCarros window = new CadastroCarros();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public CadastroCarros() throws SQLException {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame. 
-	 */
-	private void initialize() {
+	
+	
+	public CadastroCarros() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 306, 518);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
