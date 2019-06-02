@@ -107,9 +107,9 @@ public class ClienteDAO {
 					cli = new Cliente();
 		
 					cli.setCliid(result.getInt("cliid"));
-					cli.setCliome(result.getString("clinome"));
-					cli.setCliemail(result.getString("cliemail"));
+					cli.setClinome(result.getString("clinome"));
 					cli.setClitelefone(result.getString("clitelefone"));
+					cli.setCliemail(result.getString("cliemail"));
 					cli.setClisenha(result.getString("clisenha"));
 					
 					listCliente.add(cli);
