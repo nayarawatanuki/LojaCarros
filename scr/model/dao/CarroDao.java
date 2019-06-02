@@ -146,5 +146,50 @@ public class CarroDao {
 	public ArrayList<Carros> selectCarros() throws SQLException {
 		return selectCarros("");
 	}
+	
+	public ArrayList<Carros> selectCarrosPromo(String filter) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+	
+		ArrayList<Carros> listCarros = new ArrayList<>();
+		Carros car = new Carros();
+	
+		try {
+			String query = "{call buscar_Carros_Promo(?)}"; 
+	
+			conn = MySqlConnection.getConnection();
+			ps = conn.prepareStatement(query);		
+	
+			ps.setString(1, filter);
+	
+			ResultSet result = ps.executeQuery();
+			
+			while(result.next()) {
+				car = new Carros();
+	
+				car.setId(result.getInt("id"));
+				car.setModelo(result.getString("modelo"));
+				car.setMarca(result.getString("marca"));
+				car.setAno(result.getInt("ano"));
+				car.setCidade(result.getString("cidade"));
+				car.setEstado(result.getString("estado"));
+				car.setPlaca(result.getString("placa"));
+				car.setChassi(result.getString("chassi"));
+				car.setKm(result.getDouble("km"));
+				car.setPreco(result.getDouble("preco"));
+				car.setCombustivel(result.getString("combustivel"));
+				
+				listCarros.add(car);
+			}
+	
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			conn.close();
+		}
+	
+		return listCarros;
+	
+	}
 
 }

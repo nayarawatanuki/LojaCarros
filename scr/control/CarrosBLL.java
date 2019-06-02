@@ -62,5 +62,19 @@ public class CarrosBLL {
 		return null;
 	
 	}
+	
+	public ArrayList<Carros> selectCarrosPromo(String filter) {
+		
+		try {
+			
+			return dao.selectCarrosPromo(filter);
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	
+	}
 
 }
