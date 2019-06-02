@@ -397,6 +397,7 @@ public class CadastroCarros {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new Menu();
 				frame.dispose();
 			}
 		});
@@ -433,5 +434,6 @@ public class CadastroCarros {
 		
 		panelCarro.setLayout(gl_panelCarro);
 		frame.getContentPane().setLayout(groupLayout);
+		frame.setVisible(true);
 	}
 }
