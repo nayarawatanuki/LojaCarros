@@ -2,9 +2,14 @@ package view;
 
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import control.CarrosBLL;
+import model.entities.Carros;
+
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -53,7 +58,11 @@ public class Menu {
 		JMenuItem menuitemEstoqueDeCarros = new JMenuItem("Estoque de Carros");
 		menuitemEstoqueDeCarros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new EstoqueCarros();				
+				CarrosBLL ctrl = new CarrosBLL();
+				
+				ArrayList<Carros> carros = ctrl.selectCarros("");
+				
+				new EstoqueCarros(carros);				
 				frame.dispose();
 			}
 		});

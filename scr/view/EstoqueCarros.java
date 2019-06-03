@@ -9,7 +9,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import model.entities.Carros;
+
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class EstoqueCarros {
@@ -18,9 +22,9 @@ public class EstoqueCarros {
 	private JTextField txtBusca;
 	private JTable table;
 
-	public EstoqueCarros() {
+	public EstoqueCarros(ArrayList<Carros> carros) {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 594, 270);
+		frame.setBounds(100, 100, 594, 294);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblCarro = new JLabel("Carro:");

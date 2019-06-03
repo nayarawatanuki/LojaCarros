@@ -5,14 +5,23 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import control.CarrosBLL;
+import model.entities.Carros;
+
 import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Catalogo {
 
 	private JFrame frame;
+	
+	CarrosBLL ctrl = new CarrosBLL();
 
 	public Catalogo() {
 		frame = new JFrame();
@@ -28,26 +37,67 @@ public class Catalogo {
 		});
 		
 		JPanel panel = new JPanel();
+		
+		JLabel lblDestaques = new JLabel("Destaques");
+		lblDestaques.setFont(new Font("Mongolian Baiti", Font.PLAIN, 20));
+		
+		JButton btnMaisOfertas = new JButton("Mais Ofertas");
+		btnMaisOfertas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<Carros> carros = ctrl.selectCarrosPromo("");
+				
+				new EstoqueCarros(carros);
+				frame.dispose();
+			}
+		});
+		
+		JButton btnTodoOEstoque = new JButton("Todo o Estoque");
+		btnTodoOEstoque.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<Carros> carros = ctrl.selectCarros("");
+				
+				new EstoqueCarros(carros);
+				frame.dispose();
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(6, Short.MAX_VALUE)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1031, GroupLayout.PREFERRED_SIZE)
-					.addGap(96))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(108)
-					.addComponent(btnVoltar)
-					.addContainerGap(1054, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(78)
+							.addComponent(lblDestaques))
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(108)
+								.addComponent(btnVoltar)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnTodoOEstoque)
+								.addGap(57)
+								.addComponent(btnMaisOfertas))
+							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+								.addGap(98)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1031, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(96, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(39, Short.MAX_VALUE)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 572, GroupLayout.PREFERRED_SIZE)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(30, Short.MAX_VALUE)
+					.addComponent(lblDestaques)
 					.addGap(18)
-					.addComponent(btnVoltar)
-					.addGap(24))
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 526, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnVoltar)
+							.addGap(24))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnMaisOfertas)
+								.addComponent(btnTodoOEstoque))
+							.addContainerGap())))
 		);
 		
 		JButton btnNissanVersa = new JButton("NISSAN VERSA - 10% off");
