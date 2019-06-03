@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `lojacarros` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `lojacarros` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 USE `lojacarros`;
--- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: lojacarros
+-- Host: 127.0.0.1    Database: lojacarros
 -- ------------------------------------------------------
--- Server version	8.0.16
+-- Server version	8.0.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `carro` (
   `preco` double DEFAULT NULL,
   `combustivel` varchar(25) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT '1',
-  `promocao` tinyint(1) DEFAULT '0', 
+  `promocao` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,7 +48,7 @@ CREATE TABLE `carro` (
 
 LOCK TABLES `carro` WRITE;
 /*!40000 ALTER TABLE `carro` DISABLE KEYS */;
-INSERT INTO `carro` VALUES (1,'Gol','Volkswagen',2017,'São Paulo','SP','ABC1234','cha21',29357.9,30000,'Gasolina',1, 1),(2,'Gol','',2017,'São Paulo','SP','ABC1234','bhfsd47',29357.9,30000,'Gasolina',0, 0),(3,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,0, 0),(4,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,1, 0),(5,'Modelo Teste','Teste Marca',2016,'Bragança Paulista','SP','BLL7896','BJK4582',12457.89,23600,'Flex',1, 1),(6,'Golf','Volkswagen',2017,'Bragança Paulista','SP','POI9876','768ab12',9635.2,35000,'Flex',1, 0);
+INSERT INTO `carro` VALUES (1,'Gol','Volkswagen',2017,'São Paulo','SP','ABC1234','cha21',29357.9,30000,'Gasolina',1,1),(2,'Gol','',2017,'São Paulo','SP','ABC1234','bhfsd47',29357.9,30000,'Gasolina',0,0),(3,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,0,0),(4,'Modelo Teste',NULL,0,NULL,NULL,NULL,NULL,0,0,NULL,1,0),(5,'Modelo Teste','Teste Marca',2016,'Bragança Paulista','SP','BLL7896','BJK4582',12457.89,23600,'Flex',1,1),(6,'Golf','Volkswagen',2017,'Bragança Paulista','SP','POI9876','768ab12',9635.2,35000,'Flex',1,0);
 /*!40000 ALTER TABLE `carro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `cliente` (
   `clisenha` varchar(30) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`cliid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'João','joao@hotmail.com','4004-6789','joao123',0),(2,'João Paulo Silva','jpSilva@hotmail.com','4004-6789','joao123',1);
+INSERT INTO `cliente` VALUES (1,'João','joao@hotmail.com','4004-6789','joao123',0),(2,'João Paulo Silva','jpSilva@hotmail.com','4004-6789','joao123',1),(3,'Jujuli',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,9 +120,9 @@ CREATE TABLE `gerente` (
   `gerid` int(11) NOT NULL AUTO_INCREMENT,
   `gernome` varchar(50) DEFAULT NULL,
   `gerregistro` varchar(20) DEFAULT NULL,
-  `ativo` tinyint(1) DEFAULT NULL
+  `ativo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`gerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE `gerente` (
 
 LOCK TABLES `gerente` WRITE;
 /*!40000 ALTER TABLE `gerente` DISABLE KEYS */;
-INSERT INTO `gerente` VALUES (1,'Alice Lima','1762451',1),(2,'Julianne Santos','176232x',1),(3,'Nayara Watanuki','1762265',1),(4,'Marcelo Augusto','1562932',1),(5,'Gaby','2549873',0);
+INSERT INTO `gerente` VALUES (1,'Alice Lima','1762451',1),(2,'Julianne Santos','176232x',1),(3,'Nayara Watanuki','1762265',1),(4,'Marcelo Augusto','1562932',1),(5,'Gaby','2549873',0),(6,'Julianne Santos','teste',0);
 /*!40000 ALTER TABLE `gerente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,10 +200,10 @@ CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL,
-  `idGerente` int not null,
+  `idGerente` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   KEY `idGerente` (`idGerente`),
-  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idGerente`) REFERENCES `gerente` (`gerid`),
+  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idGerente`) REFERENCES `gerente` (`gerid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -213,10 +213,13 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'gerente','123', 1),(2,'funcionario','123', 3);
+INSERT INTO `usuario` VALUES (1,'gerente','123',1),(2,'funcionario','123',3);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Dumping events for database 'lojacarros'
+--
 
 --
 -- Dumping routines for database 'lojacarros'
@@ -333,7 +336,10 @@ BEGIN
 	END IF;
 END ;;
 DELIMITER ;
-
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `buscar_Carros_Promo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -367,7 +373,6 @@ BEGIN
 	END IF;
 END ;;
 DELIMITER ;
-
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -569,4 +574,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-31 13:19:21
+-- Dump completed on 2019-06-02 16:41:16
