@@ -40,7 +40,7 @@ public class CadastroCarros {
 		panelCarro.setBorder(new TitledBorder(null, "Carro", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		JPanel panelDoc = new JPanel();
-		panelDoc.setBorder(new TitledBorder(null, "Documenta\u00E7\u00E3o", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelDoc.setBorder(new TitledBorder(null, "Documentacao", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		JLabel lblChassi = new JLabel("Chassi:");
 		
@@ -51,7 +51,7 @@ public class CadastroCarros {
 		
 		JLabel lblKm = new JLabel("Km:");
 		
-		JLabel lblPreo = new JLabel("Preço:");
+		JLabel lblPreo = new JLabel("Preco:");
 		
 		JLabel lblCombustivel = new JLabel("Combustivel:");
 		

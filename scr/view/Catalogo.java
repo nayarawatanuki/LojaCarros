@@ -101,13 +101,13 @@ public class Catalogo {
 		);
 		
 		JButton btnNissanVersa = new JButton("NISSAN VERSA - 10% off");
-		btnNissanVersa.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/2017-Nissan-Versa-01-2.jpg"));
+		btnNissanVersa.setIcon(new ImageIcon("img/2017-Nissan-Versa-01-2.jpg"));
 		
 		JButton btnFordKa = new JButton("FORD KA - 40% off");
-		btnFordKa.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
+		btnFordKa.setIcon(new ImageIcon("img/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
 		
 		JButton btn50off = new JButton("FOX - 50% off");
-		btn50off.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/volkswagen-fox-2018-2.jpg"));
+		btn50off.setIcon(new ImageIcon("img/volkswagen-fox-2018-2.jpg"));
 		btn50off.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ContrapropostaCliente();
@@ -115,7 +115,7 @@ public class Catalogo {
 		});
 		
 		JButton btnHondaFit = new JButton("HONDA FIT - 20% off");
-		btnHondaFit.setIcon(new ImageIcon("/Users/nayarawatanuki/git/LojaCarros/img/Honda-Fit-EX-2018-CVT-2.jpg"));
+		btnHondaFit.setIcon(new ImageIcon("img/Honda-Fit-EX-2018-CVT-2.jpg"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

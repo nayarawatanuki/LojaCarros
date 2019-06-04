@@ -5,10 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableModel;
 
 import model.entities.Carros;
 
@@ -17,13 +20,18 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class EstoqueCarros {
+	
+	private static JTextField txtBusca;
+	private static JTable tabela;
+	private static DefaultTableModel modelo = new DefaultTableModel();
+	private static ArrayList<Carros> carros;
+	
+	public EstoqueCarros(ArrayList<Carros> carrosP) {
+		
+		carros = carrosP;
+		JTable();
 
-	JFrame frame;
-	private JTextField txtBusca;
-	private JTable table;
-
-	public EstoqueCarros(ArrayList<Carros> carros) {
-		frame = new JFrame();
+		JFrame frame = new JFrame();
 		frame.setBounds(100, 100, 594, 294);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -34,7 +42,7 @@ public class EstoqueCarros {
 		
 		JButton btnBuscar = new JButton("Buscar");
 		
-		table = new JTable();
+		JScrollPane barraRolagem = new JScrollPane(tabela);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
@@ -72,7 +80,7 @@ public class EstoqueCarros {
 							.addComponent(btnEditar)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnCadastrar))
-						.addComponent(table, GroupLayout.PREFERRED_SIZE, 529, GroupLayout.PREFERRED_SIZE))
+						.addComponent(barraRolagem))
 					.addGap(35))
 		);
 		groupLayout.setVerticalGroup(
@@ -87,7 +95,7 @@ public class EstoqueCarros {
 							.addComponent(txtBusca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(btnBuscar)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(tabela, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVoltar)
@@ -97,5 +105,53 @@ public class EstoqueCarros {
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setVisible(true);
+	}
+	
+	private static void JTable() {
+		try {
+			tabela = new JTable(modelo);
+	        modelo.addColumn("ID");
+	        modelo.addColumn("Modelo");
+	        modelo.addColumn("Marca");
+	        modelo.addColumn("Ano");
+	        modelo.addColumn("Cidade");
+	        modelo.addColumn("Estado");
+	        modelo.addColumn("Placa");
+	        modelo.addColumn("Chassi");
+	        modelo.addColumn("KM rodados");
+	        modelo.addColumn("Preço");
+	        modelo.addColumn("Combustível");
+	        
+	        tabela.getColumnModel().getColumn(0).setPreferredWidth(10);
+	        tabela.getColumnModel().getColumn(1).setPreferredWidth(80);
+	        tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
+	        tabela.getColumnModel().getColumn(3).setPreferredWidth(100);
+	        tabela.getColumnModel().getColumn(4).setPreferredWidth(80);
+	        tabela.getColumnModel().getColumn(5).setPreferredWidth(50);
+	        tabela.getColumnModel().getColumn(6).setPreferredWidth(80);
+	        tabela.getColumnModel().getColumn(7).setPreferredWidth(100);
+	        tabela.getColumnModel().getColumn(8).setPreferredWidth(100);
+	        tabela.getColumnModel().getColumn(9).setPreferredWidth(80);
+	        tabela.getColumnModel().getColumn(10).setPreferredWidth(50);
+	        
+	        pesquisar(modelo, carros);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao criar tabela.");
+		}
+		
+	}
+     
+	private static void pesquisar(DefaultTableModel modelo, ArrayList<Carros> carros) {
+		modelo.setNumRows(0);
+        
+        try {
+	        for (Carros car : carros) {
+	            modelo.addRow(new Object[]{car.getId(), car.getModelo(), car.getMarca(), car.getAno(),
+	            		car.getCidade(), car.getEstado(), car.getPlaca(), car.getChassi(), car.getKm(),
+	            		car.getPreco(), car.getCombustivel()});
+	        }
+        } catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela.");
+		}
 	}
 }

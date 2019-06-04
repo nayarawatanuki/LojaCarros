@@ -12,7 +12,7 @@ import com.mysql.jdbc.Driver;
 public class MySqlConnection {
 	public static final String URL = "jdbc:mysql://localhost:3306/lojacarros?useSSL=false&useTimezone=true&serverTimezone=UTC";
 	public static final String USER = "root";
-	public static final String PASS = "";
+	public static final String PASS = "nascel";
 
 	public static Connection getConnection() {
 		try {
