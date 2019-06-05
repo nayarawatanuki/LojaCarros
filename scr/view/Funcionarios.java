@@ -97,19 +97,15 @@ public class Funcionarios {
 				frame.dispose();
 			}
 		});
-		
-		JButton btnBuscar = new JButton("buscar");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(64)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addContainerGap()
 							.addComponent(btnVoltar)
-							.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-							.addComponent(btnBuscar)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnSalvar))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
@@ -123,9 +119,8 @@ public class Funcionarios {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnVoltar)
 						.addComponent(btnSalvar)
-						.addComponent(btnBuscar))
+						.addComponent(btnVoltar))
 					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
