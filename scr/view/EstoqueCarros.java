@@ -44,22 +44,12 @@ public class EstoqueCarros {
 		
 		JScrollPane barraRolagem = new JScrollPane(tabela);
 		
+		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Menu();
 				frame.dispose();				
-			}
-		});
-		
-		JButton btnEditar = new JButton("Editar");
-		
-		JButton btnCadastrar = new JButton("Novo");
-		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new CadastroCarros();
-				frame.dispose();
-								
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -71,16 +61,11 @@ public class EstoqueCarros {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblCarro, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnBuscar))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVoltar)
-							.addPreferredGap(ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
-							.addComponent(btnEditar)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnCadastrar))
-						.addComponent(barraRolagem))
+						.addComponent(btnVoltar, Alignment.LEADING)
+						.addComponent(barraRolagem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(35))
 		);
 		groupLayout.setVerticalGroup(
@@ -95,13 +80,10 @@ public class EstoqueCarros {
 							.addComponent(txtBusca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(btnBuscar)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(tabela, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(barraRolagem, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnVoltar)
-						.addComponent(btnCadastrar)
-						.addComponent(btnEditar))
-					.addContainerGap(18, Short.MAX_VALUE))
+					.addComponent(btnVoltar)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setVisible(true);
