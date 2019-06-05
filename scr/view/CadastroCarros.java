@@ -320,7 +320,7 @@ public class CadastroCarros {
 		JLabel lblAno = new JLabel("Ano:");
 		
 		JComboBox cbMarca = new JComboBox();
-		cbMarca.setModel(new DefaultComboBoxModel(new String[] {null, "Volkswagen"}));
+		cbMarca.setModel(new DefaultComboBoxModel(new String[] {null, "Audi", "BMW", "Chevrolet", "Chrysler", "Dodge", "Fiat", "Ford", "Honda", "Hyundai", "Jeep", "Kia", "Lamborghini", "Mitsubishi", "Nissan","Renault", "Subaru", "Toyota", "Volkswagen"}));
 		
 		JYearChooser yearChooser = new JYearChooser();
 		GroupLayout gl_panelCarro = new GroupLayout(panelCarro);

@@ -23,7 +23,7 @@ public class EstoqueCarros {
 	
 	private static JTextField txtBusca;
 	private static JTable tabela;
-	private static DefaultTableModel modelo = new DefaultTableModel();
+	private static DefaultTableModel modelo;
 	private static ArrayList<Carros> carros;
 	
 	public EstoqueCarros(ArrayList<Carros> carrosP) {
@@ -91,7 +91,9 @@ public class EstoqueCarros {
 	
 	private static void JTable() {
 		try {
+			modelo = new DefaultTableModel();
 			tabela = new JTable(modelo);
+			
 	        modelo.addColumn("ID");
 	        modelo.addColumn("Modelo");
 	        modelo.addColumn("Marca");
