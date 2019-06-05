@@ -100,7 +100,7 @@ public class ContrapropostaCliente {
 							comboBox.getSelectedItem().toString(), 
 							" "));
 					 
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+					JOptionPane.showMessageDialog(null, "Contraproposta enviada!");
 				}
 			}
 		});
