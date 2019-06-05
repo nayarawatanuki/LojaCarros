@@ -24,8 +24,8 @@ public class ContraPropostaDao {
 			ps = conn.prepareStatement(query);
 	
 			ps.setDouble(1, proposta.getValor());
-			ps.setInt(2, proposta.getCliente().getCliid());
-			ps.setInt(3, proposta.getCarro().getId());
+			ps.setString(2, proposta.getCliente());
+			ps.setString(3, proposta.getCarro());
 	
 			if(ps.executeUpdate() != 0) 
 				return true;
@@ -68,8 +68,8 @@ public class ContraPropostaDao {
 					cli.setCliid(result.getInt("idCliente"));
 					car.setId(result.getInt("idCarro"));
 					
-					proposta.setCliente(cli);
-					proposta.setCarro(car);
+					//proposta.setCliente(cli);
+					//proposta.setCarro(car);
 					proposta.setValor(result.getInt("valor"));
 					
 					listPropostas.add(proposta);

@@ -1,20 +1,27 @@
 package model.entities;
 
 public class ContraProposta {
-	private Cliente cliente;
-	private Carros carro;
+	private String cliente;
+	private String carro;
 	private double valor;
 	
-	public Cliente getCliente() {
+	public ContraProposta() {}
+	public ContraProposta(double valor, String cliente, String carro) {
+		this.valor = valor;
+		this.cliente = cliente;
+		this.carro = carro;
+	}
+	
+	public String getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(String cliente) {
 		this.cliente = cliente;
 	}
-	public Carros getCarro() {
+	public String getCarro() {
 		return carro;
 	}
-	public void setCarro(Carros carro) {
+	public void setCarro(String carro) {
 		this.carro = carro;
 	}
 	public double getValor() {

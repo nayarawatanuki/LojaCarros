@@ -20,7 +20,7 @@ public class Cliente {
 	public int getCliid() {
 		return cliid;
 	} 
-	
+
 	public void setCliid(int cliid) {
 		this.cliid = cliid;
 	} 
@@ -55,6 +55,11 @@ public class Cliente {
 	
 	public void setClisenha(String clisenha) {
 		this.clisenha = clisenha;
+	}
+	
+	@Override
+	public String toString() {
+		return clinome;
 	}
 	
 }

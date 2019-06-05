@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EtchedBorder;
@@ -28,7 +27,6 @@ public class CadastroCliente {
 	private JFrame frame;
 	private JTextField txtNome;
 	private JFormattedTextField ftxtTelefone;
-	private JPasswordField pwdSenha;
 
 	public CadastroCliente() {
 		frame = new JFrame();
@@ -55,10 +53,6 @@ public class CadastroCliente {
 		
 		JLabel lblEmail = new JLabel("E-mail:");
 		
-		JLabel lblSenha = new JLabel("Senha:");
-		
-		pwdSenha = new JPasswordField();
-		
 		JFormattedTextField ftxtEmail = new JFormattedTextField();
 		
 		JLabel lblCarros = new JLabel("Carros de interesse:");
@@ -72,11 +66,12 @@ public class CadastroCliente {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(20)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(list, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblSenha, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(pwdSenha))
+							.addComponent(lblCarros, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnBuscar))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNome)
@@ -86,12 +81,7 @@ public class CadastroCliente {
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(ftxtEmail, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
 								.addComponent(txtNome, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-								.addComponent(ftxtTelefone)))
-						.addComponent(list, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblCarros, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnBuscar)))
+								.addComponent(ftxtTelefone))))
 					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
@@ -109,33 +99,28 @@ public class CadastroCliente {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEmail)
 						.addComponent(ftxtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblSenha)
-						.addComponent(pwdSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(12)
+					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCarros)
 						.addComponent(btnBuscar))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(list, GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-					.addContainerGap())
+					.addGap(32))
 		);
 		panel.setLayout(gl_panel);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				if(txtNome.getText() == null | ftxtTelefone.getText() == null | ftxtEmail.getText() == null | pwdSenha.getText() == null) {
+				if(txtNome.getText() == null | ftxtTelefone.getText() == null | ftxtEmail.getText() == null) {
 					JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos.");
 				}else {
 					ClienteBLL cli = new ClienteBLL();
 					cli.insertCliente(new Cliente(
 							txtNome.getText().toString(), 
 							ftxtTelefone.getText(), 
-							ftxtEmail.getText(), 
-							pwdSenha.getText().toString()));
+							ftxtEmail.getText(),
+							null));
 					
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 				}
@@ -156,7 +141,6 @@ public class CadastroCliente {
 				txtNome.setText(null);
 				ftxtTelefone.setValue(null);
 				ftxtEmail.setText(null);
-				pwdSenha.setText(null);
 				
 			}
 		});
