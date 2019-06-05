@@ -5,6 +5,13 @@ public class Gerente {
 	private String gernome;
 	private String gerregistro;
 	
+	
+	public Gerente() {}
+	public Gerente(String gernome, String gerregistro) {
+		this.gernome = gernome;
+		this.gerregistro = gerregistro;
+	}
+
 	public int getGerid() {
 		return gerid;
 	}
