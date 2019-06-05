@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,33 +30,7 @@ public class CadastroCliente {
 	private JFormattedTextField ftxtTelefone;
 	private JPasswordField pwdSenha;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroCliente window = new CadastroCliente();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public CadastroCliente() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 394);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -172,11 +145,21 @@ public class CadastroCliente {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new Menu();
 				frame.dispose();
 			}
 		});
 		
 		JButton btnLimparTudo = new JButton("Limpar Tudo");
+		btnLimparTudo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNome.setText(null);
+				ftxtTelefone.setValue(null);
+				ftxtEmail.setText(null);
+				pwdSenha.setText(null);
+				
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -205,5 +188,6 @@ public class CadastroCliente {
 					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
+		frame.setVisible(true);
 	}
 }

@@ -100,13 +100,14 @@ public class Catalogo {
 							.addContainerGap())))
 		);
 		
-		JButton btnNissanVersa = new JButton("NISSAN VERSA - 10% off");
+		JButton btnNissanVersa = new JButton("NISSAN VERSA - 10% off\n\nR$ 55.063,00");
 		btnNissanVersa.setIcon(new ImageIcon("img/2017-Nissan-Versa-01-2.jpg"));
 		
-		JButton btnFordKa = new JButton("FORD KA - 40% off");
+		JButton btnFordKa = new JButton("FORD KA - 40% off\n\nR$ 40.093,00");
+		btnFordKa.setToolTipText("");
 		btnFordKa.setIcon(new ImageIcon("img/Ford-Ka-SE-Plus-2019-traseira-2.jpg"));
 		
-		JButton btn50off = new JButton("FOX - 50% off");
+		JButton btn50off = new JButton("FOX - 50% off\n\nR$ 45.364,00");
 		btn50off.setIcon(new ImageIcon("img/volkswagen-fox-2018-2.jpg"));
 		btn50off.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,36 +115,35 @@ public class Catalogo {
 			}
 		});
 		
-		JButton btnHondaFit = new JButton("HONDA FIT - 20% off");
+		JButton btnHondaFit = new JButton("HONDA FIT - 20% off\n\nR$ 57.340,00");
 		btnHondaFit.setIcon(new ImageIcon("img/Honda-Fit-EX-2018-CVT-2.jpg"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(98)
-					.addComponent(btn50off, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
+					.addGap(46)
+					.addComponent(btn50off, GroupLayout.PREFERRED_SIZE, 414, GroupLayout.PREFERRED_SIZE)
 					.addGap(89)
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnNissanVersa, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnHondaFit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-						.addComponent(btnFordKa, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+						.addComponent(btnNissanVersa, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+						.addComponent(btnHondaFit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+						.addComponent(btnFordKa, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
 					.addGap(125))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(69, Short.MAX_VALUE)
+					.addContainerGap(23, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btn50off, GroupLayout.PREFERRED_SIZE, 391, GroupLayout.PREFERRED_SIZE)
+							.addGap(37))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(btnFordKa, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnHondaFit, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNissanVersa, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, 58, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btn50off, GroupLayout.PREFERRED_SIZE, 391, GroupLayout.PREFERRED_SIZE)
-							.addGap(37)))
+							.addComponent(btnNissanVersa, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)))
 					.addGap(17))
 		);
 		panel.setLayout(gl_panel);

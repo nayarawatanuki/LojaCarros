@@ -49,6 +49,24 @@ public class Menu {
 		});
 		menuCadastro.add(mntmUsuario);
 		
+		JMenuItem mntmCliente = new JMenuItem("Cliente");
+		mntmCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new CadastroCliente();
+				frame.dispose();
+			}
+		});
+		menuCadastro.add(mntmCliente);
+		
+		JMenuItem mntmGerente = new JMenuItem("Gerente");
+		mntmGerente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Registro();
+				frame.dispose();
+			}
+		});
+		menuCadastro.add(mntmGerente);
+		
 				JMenu menu = new JMenu("|");
 				menuBar.add(menu);
 		
