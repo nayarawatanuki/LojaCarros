@@ -19,13 +19,12 @@ public class ContraPropostaDao {
 	try {
 		conn = MySqlConnection.getConnection();
 	
-		String query = "{insert into contra_proposta(valor, idCliente, idCarro) values(?, ?, ?)}"; 
+		String query = "insert into contra_proposta(valor, cliente) values(?, ?)"; 
 	
 			ps = conn.prepareStatement(query);
 	
 			ps.setDouble(1, proposta.getValor());
 			ps.setString(2, proposta.getCliente());
-			ps.setString(3, proposta.getCarro());
 	
 			if(ps.executeUpdate() != 0) 
 				return true;

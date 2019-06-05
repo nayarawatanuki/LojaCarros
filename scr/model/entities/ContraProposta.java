@@ -6,10 +6,9 @@ public class ContraProposta {
 	private double valor;
 	
 	public ContraProposta() {}
-	public ContraProposta(double valor, String cliente, String carro) {
+	public ContraProposta(double valor, String cliente) {
 		this.valor = valor;
 		this.cliente = cliente;
-		this.carro = carro;
 	}
 	
 	public String getCliente() {
