@@ -25,7 +25,9 @@ public class TesteGerenteDAO {
 		/*gerente.setGerid(6);
 		gerbll.deleteGerente(gerente);*/
 		
-		gerbll.selectGerente("ju");
+		for(Gerente g : gerbll.selectGerente("Pedro")) {
+			System.out.println(g.getGernome());
+		}
 		
 	}
 }

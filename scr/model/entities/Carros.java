@@ -15,8 +15,6 @@ public class Carros {
 	private double preco;
 	private String combustivel;
 	
-	public Carros() {}
-
 	public Carros(String modelo, String marca, int ano, String cidade, String estado, String placa, String chassi,
 			double km, double preco, String combustivel) {
 		this.modelo = modelo;
@@ -31,6 +29,10 @@ public class Carros {
 		this.combustivel = combustivel;
 	}
 	
+	public Carros() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
