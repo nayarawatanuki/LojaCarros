@@ -16,6 +16,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 public class Login {
 	
@@ -30,16 +32,16 @@ public class Login {
 		frmLogin.getContentPane().setLayout(null);
 		
 		JLabel lblLogin = new JLabel("LOGIN:");
-		lblLogin.setBounds(45, 117, 46, 14);
+		lblLogin.setBounds(265, 99, 46, 14);
 		frmLogin.getContentPane().add(lblLogin);
 		
 		JTextField txtLogin = new JTextField();
-		txtLogin.setBounds(104, 114, 212, 20);
+		txtLogin.setBounds(326, 96, 134, 20);
 		frmLogin.getContentPane().add(txtLogin);
 		txtLogin.setColumns(10);
 		
 		JLabel lblSenha = new JLabel("SENHA:");
-		lblSenha.setBounds(45, 142, 57, 14);
+		lblSenha.setBounds(265, 130, 57, 14);
 		frmLogin.getContentPane().add(lblSenha);
 		
 		JPasswordField pwdSenha = new JPasswordField();
@@ -68,7 +70,7 @@ public class Login {
 		        }
 			}
 		});
-		pwdSenha.setBounds(104, 139, 212, 20);
+		pwdSenha.setBounds(326, 127, 134, 20);
 		frmLogin.getContentPane().add(pwdSenha);
 		
 		/** BOT�O ENTRAR **/
@@ -97,7 +99,7 @@ public class Login {
 				acesso.permissao = false;
 			}
 		});
-		btnEntrar.setBounds(94, 195, 87, 23);
+		btnEntrar.setBounds(294, 187, 87, 23);
 		frmLogin.getContentPane().add(btnEntrar);
 		
 		/** BOT�O CANCELAR **/
@@ -109,25 +111,31 @@ public class Login {
 			}
 			
 		});
-		btnSair.setBounds(205, 195, 101, 23);
+		btnSair.setBounds(391, 187, 69, 23);
 		frmLogin.getContentPane().add(btnSair);
 		
 		JLabel lblFarmcia = new JLabel("Loja de Carros");
 		lblFarmcia.setForeground(new Color(0, 128, 0));
 		lblFarmcia.setFont(new Font("Calibri", Font.BOLD, 60));
 		lblFarmcia.setBackground(new Color(255, 69, 0));
-		lblFarmcia.setBounds(21, 11, 476, 74);
+		lblFarmcia.setBounds(21, 11, 439, 74);
 		frmLogin.getContentPane().add(lblFarmcia);
 		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Login.class.getResource("")));
-		label.setBounds(31, 171, 107, 122);
-		frmLogin.getContentPane().add(label);
-		
 		JLabel lblUseATecla = new JLabel("use a tecla ENTER para entrar ou o bot\u00E3o");
+		lblUseATecla.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		lblUseATecla.setForeground(Color.RED);
-		lblUseATecla.setBounds(114, 169, 275, 14);
+		lblUseATecla.setBounds(294, 155, 220, 14);
 		frmLogin.getContentPane().add(lblUseATecla);
+		
+		JButton btnNewButton = new JButton("Promo\u00E7\u00F5es");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Catalogo();
+				frmLogin.dispose();
+			}
+		});
+		btnNewButton.setBounds(21, 130, 139, 68);
+		frmLogin.getContentPane().add(btnNewButton);
 		
 		frmLogin.setVisible(true);
 		}

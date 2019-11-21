@@ -13,6 +13,9 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
+
+import control.CarrosBLL;
+
 import model.entities.Carros;
 
 import java.awt.event.ActionListener;
@@ -32,7 +35,7 @@ public class EstoqueCarros {
 		JTable();
 
 		JFrame frame = new JFrame();
-		frame.setBounds(100, 100, 594, 294);
+		frame.setBounds(100, 100, 650, 421);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblCarro = new JLabel("Carro:");
@@ -41,8 +44,17 @@ public class EstoqueCarros {
 		txtBusca.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String filtro = txtBusca.getText();
+				CarrosBLL car = new CarrosBLL();		
+				ArrayList<Carros> carro = car.selectCarros(filtro);	
+				pesquisar(modelo, carro);
+			}
+		});
 		
 		JScrollPane barraRolagem = new JScrollPane(tabela);
+		barraRolagem.setToolTipText("");
 		
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -52,21 +64,27 @@ public class EstoqueCarros {
 				frame.dispose();				
 			}
 		});
+	
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(30)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblCarro, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnBuscar))
-						.addComponent(btnVoltar, Alignment.LEADING)
-						.addComponent(barraRolagem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(lblCarro, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtBusca, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnBuscar)
 					.addGap(35))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnVoltar)
+					.addPreferredGap(ComponentPlacement.UNRELATED)			
+					.addContainerGap(464, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(barraRolagem, GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -80,10 +98,11 @@ public class EstoqueCarros {
 							.addComponent(txtBusca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(btnBuscar)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(barraRolagem, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnVoltar)
-					.addContainerGap(23, Short.MAX_VALUE))
+					.addComponent(barraRolagem, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVoltar))
+					.addGap(30))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setVisible(true);
@@ -100,23 +119,11 @@ public class EstoqueCarros {
 	        modelo.addColumn("Ano");
 	        modelo.addColumn("Cidade");
 	        modelo.addColumn("Estado");
-	        modelo.addColumn("Placa");
-	        modelo.addColumn("Chassi");
+	       // modelo.addColumn("Placa");
+	       // modelo.addColumn("Chassi");
 	        modelo.addColumn("KM rodados");
-	        modelo.addColumn("Preço");
+	        //modelo.addColumn("Preço");
 	        modelo.addColumn("Combustível");
-	        
-	        tabela.getColumnModel().getColumn(0).setPreferredWidth(10);
-	        tabela.getColumnModel().getColumn(1).setPreferredWidth(80);
-	        tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
-	        tabela.getColumnModel().getColumn(3).setPreferredWidth(100);
-	        tabela.getColumnModel().getColumn(4).setPreferredWidth(80);
-	        tabela.getColumnModel().getColumn(5).setPreferredWidth(50);
-	        tabela.getColumnModel().getColumn(6).setPreferredWidth(80);
-	        tabela.getColumnModel().getColumn(7).setPreferredWidth(100);
-	        tabela.getColumnModel().getColumn(8).setPreferredWidth(100);
-	        tabela.getColumnModel().getColumn(9).setPreferredWidth(80);
-	        tabela.getColumnModel().getColumn(10).setPreferredWidth(50);
 	        
 	        pesquisar(modelo, carros);
 		} catch (Exception e) {
@@ -130,9 +137,13 @@ public class EstoqueCarros {
         
         try {
 	        for (Carros car : carros) {
-	            modelo.addRow(new Object[]{car.getId(), car.getModelo(), car.getMarca(), car.getAno(),
+	           /* modelo.addRow(new Object[]{car.getId(), car.getModelo(), car.getMarca(), car.getAno(),
 	            		car.getCidade(), car.getEstado(), car.getPlaca(), car.getChassi(), car.getKm(),
-	            		car.getPreco(), car.getCombustivel()});
+	            		car.getPreco(), car.getCombustivel()});*/
+	            
+	            modelo.addRow(new Object[]{car.getId(), car.getModelo(), car.getMarca(), car.getAno(),
+	            		car.getCidade(), car.getEstado(), car.getKm(),
+	            		car.getCombustivel()});
 	        }
         } catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela.");

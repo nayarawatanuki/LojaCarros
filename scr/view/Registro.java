@@ -30,7 +30,7 @@ public class Registro {
 
 	public Registro() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 391, 300);
+		frame.setBounds(100, 100, 362, 279);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -78,7 +78,7 @@ public class Registro {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Menu();
+				//new Menu();
 				frame.dispose();
 			}
 		});
@@ -133,16 +133,16 @@ public class Registro {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(49)
+					.addGap(24)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(43, Short.MAX_VALUE))
+					.addContainerGap(52, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(32, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(19)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-					.addGap(41))
+					.addContainerGap(37, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setVisible(true);

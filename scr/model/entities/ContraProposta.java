@@ -6,7 +6,7 @@ public class ContraProposta {
 	private double valor;
 	
 	public ContraProposta() {}
-	public ContraProposta(double valor, String cliente) {
+	public ContraProposta(double valor) {
 		this.valor = valor;
 		this.cliente = cliente;
 	}

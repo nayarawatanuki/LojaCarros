@@ -20,7 +20,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
 import control.ClienteBLL;
+import control.ContraPropostaBLL;
 import model.entities.Cliente;
+import model.entities.ContraProposta;
 
 public class CadastroCliente {
 
@@ -30,7 +32,7 @@ public class CadastroCliente {
 
 	public CadastroCliente() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 394);
+		frame.setBounds(100, 100, 450, 389);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -47,6 +49,7 @@ public class CadastroCliente {
 		try{
 			MaskFormatter tel = new MaskFormatter("(##) ####-####");
 			ftxtTelefone = new JFormattedTextField(tel);
+			ftxtTelefone.setText("");
 			
 		}catch (Exception e){
 		}
@@ -61,28 +64,37 @@ public class CadastroCliente {
 		
 		JList list = new JList();
 		
+		JFormattedTextField valor = new JFormattedTextField();
+		
+		JLabel lblContraproposta = new JLabel("Contraproposta");
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(20)
+					.addGap(40)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(list, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblCarros, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnBuscar))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNome)
-								.addComponent(lblTelefone)
-								.addComponent(lblEmail))
-							.addGap(10)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(ftxtEmail, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-								.addComponent(txtNome, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-								.addComponent(ftxtTelefone))))
-					.addContainerGap(31, Short.MAX_VALUE))
+						.addComponent(lblNome)
+						.addComponent(lblTelefone)
+						.addComponent(lblEmail)
+						.addComponent(lblContraproposta))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel.createSequentialGroup()
+								.addComponent(lblCarros, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnBuscar))
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(ftxtEmail, Alignment.LEADING)
+								.addComponent(txtNome, Alignment.LEADING)
+								.addComponent(ftxtTelefone, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
+						.addComponent(valor, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(52, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(30, Short.MAX_VALUE)
+					.addComponent(list, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
+					.addGap(54))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -99,13 +111,17 @@ public class CadastroCliente {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEmail)
 						.addComponent(ftxtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(12)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCarros)
-						.addComponent(btnBuscar))
+						.addComponent(lblContraproposta)
+						.addComponent(valor, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addGap(24)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnBuscar)
+						.addComponent(lblCarros))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(list, GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-					.addGap(32))
+					.addComponent(list, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
 		
@@ -122,7 +138,13 @@ public class CadastroCliente {
 							ftxtEmail.getText(),
 							null));
 					
+					ContraPropostaBLL car = new ContraPropostaBLL();
+					car.insertContraProposta(new ContraProposta(
+							Double.parseDouble(valor.getText())));
+					
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+					new Catalogo();	
+					frame.dispose();
 				}
 			}
 		});
@@ -130,7 +152,7 @@ public class CadastroCliente {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Menu();
+				new Catalogo();				
 				frame.dispose();
 			}
 		});
@@ -141,35 +163,37 @@ public class CadastroCliente {
 				txtNome.setText(null);
 				ftxtTelefone.setValue(null);
 				ftxtEmail.setText(null);
+				valor.setText(null);
 				
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(21)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnLimparTudo)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(7)
 							.addComponent(btnCancelar)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnSalvar))
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 407, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(22, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(17)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(btnSalvar)
-						.addComponent(btnCancelar)
-						.addComponent(btnLimparTudo))
-					.addContainerGap(15, Short.MAX_VALUE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnLimparTudo)
+							.addComponent(btnCancelar)))
+					.addContainerGap())
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setVisible(true);

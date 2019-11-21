@@ -96,8 +96,8 @@ public class ContrapropostaCliente {
 					
 					ContraPropostaBLL car = new ContraPropostaBLL();
 					car.insertContraProposta(new ContraProposta(
-							Double.parseDouble(ftxtValor.getText()),
-							comboBox.getSelectedItem().toString()));
+							Double.parseDouble(ftxtValor.getText())));
+							//comboBox.getSelectedItem().toString()));
 					 
 					JOptionPane.showMessageDialog(null, "Contraproposta enviada!");
 					frame.dispose();

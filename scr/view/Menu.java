@@ -13,6 +13,7 @@ import model.entities.Carros;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
 
 
 public class Menu {
@@ -21,7 +22,7 @@ public class Menu {
 
 	public Menu () {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 321, 298);
+		frame.setBounds(100, 100, 561, 441);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -40,28 +41,10 @@ public class Menu {
 		});
 		menuCadastro.add(menuitemCarro);
 		
-		JMenuItem mntmUsuario = new JMenuItem("Usuario");
-		mntmUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new Funcionarios();
-				frame.dispose();
-			}
-		});
-		menuCadastro.add(mntmUsuario);
-		
-		JMenuItem mntmCliente = new JMenuItem("Cliente");
-		mntmCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new CadastroCliente();
-				frame.dispose();
-			}
-		});
-		menuCadastro.add(mntmCliente);
-		
-		JMenuItem mntmGerente = new JMenuItem("Gerente");
+		JMenuItem mntmGerente = new JMenuItem("Usu\u00E1rio");
 		mntmGerente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Registro();
+				new CadastroUsuario();
 				frame.dispose();
 			}
 		});
@@ -86,7 +69,7 @@ public class Menu {
 		});
 		menuEstoque.add(menuitemEstoqueDeCarros);
 		
-		JMenuItem mntmCatalogo = new JMenuItem("Catalogo");
+		JMenuItem mntmCatalogo = new JMenuItem("Promo\u00E7\u00E3o");
 		mntmCatalogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Catalogo();

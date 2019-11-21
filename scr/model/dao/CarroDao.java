@@ -124,10 +124,10 @@ public class CarroDao {
 				car.setAno(result.getInt("ano"));
 				car.setCidade(result.getString("cidade"));
 				car.setEstado(result.getString("estado"));
-				car.setPlaca(result.getString("placa"));
-				car.setChassi(result.getString("chassi"));
+				//car.setPlaca(result.getString("placa"));
+				//car.setChassi(result.getString("chassi"));
 				car.setKm(result.getDouble("km"));
-				car.setPreco(result.getDouble("preco"));
+				//car.setPreco(result.getDouble("preco"));
 				car.setCombustivel(result.getString("combustivel"));
 				
 				listCarros.add(car);

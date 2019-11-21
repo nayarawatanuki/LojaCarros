@@ -1,71 +1,65 @@
 package testes;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-
-import control.GerenteBLL;
+import control.UsuarioBLL;
 import junit.framework.TestCase;
-import model.entities.Gerente;
+import model.entities.Usuario;
 
 class IntegracaoTest extends TestCase {
 	
 	@Test
 	void testInserir() throws SQLException {
 		
-		Gerente gerente = new Gerente();
-		gerente.setGerid(1);
-		gerente.setGernome("Alice");
-		gerente.setGerregistro("BP1762451");
+		Usuario usuario = new Usuario();
+		usuario.setUsuId(1);
+		usuario.setUsuLogin("teste2");
+		usuario.setUsuSenha("123");
+		usuario.setUsuCargo("Funcionario");
 		
-		System.out.println("Incluindo um gerentee no Sistema..."); 
+		System.out.println("Incluindo um usuário NOVO no Sistema..."); 
 		
-		GerenteBLL gerentebll = new GerenteBLL();
-		gerentebll.insertGerente(gerente);
+		UsuarioBLL usuariobll = new UsuarioBLL();		
 		
-		Assert.assertTrue( gerentebll.insertGerente(gerente));
+		Assert.assertTrue( usuariobll.insertUsuario(usuario));
 		
-		System.out.println("Gerente incluído com sucesso: " + gerente.getGernome());
+		System.out.println("Usuário incluído com sucesso: " + usuario.getUsuLogin());
 
 	}
 	
 	@Test
 	void testConsultar() throws SQLException {
 		
-		Gerente gerente = new Gerente();
-		gerente.setGerid(1);
-		gerente.setGernome("Alice");
-		gerente.setGerregistro("BP1762451");
+		Usuario usuario = new Usuario();
+		usuario.setUsuId(1);
+		usuario.setUsuLogin("teste2");
+		usuario.setUsuCargo("Funcionario");
 		
-		System.out.println("Consultando um gerente no Sistema...");
+		System.out.println("Consultando Usuário no Sistema...");
 		
-		GerenteBLL gerentebll = new GerenteBLL();
-		gerentebll.selectGerente(gerente.getGernome());
+		UsuarioBLL usuariobll = new UsuarioBLL();
+		usuariobll.selectUsuario(usuario.getUsuLogin());
 		 
-		System.out.println("Gerente consultado com sucesso ");
+		System.out.println("Funcionario consultado com sucesso ");
 	}
 	
 	@Test
 	void testRemover() throws SQLException {
 		
-		Gerente gerente = new Gerente();
-		gerente.setGerid(1);
-		gerente.setGernome("Pedro");
-		gerente.setGerregistro("BP1775552");
+		Usuario usuario = new Usuario();
+		usuario.setUsuId(9);		
 		
-		System.out.println("Excluindo um gerente no Sistema...");
+		System.out.println("Excluindo um usuário no Sistema...");
 		
-		GerenteBLL gerentebll = new GerenteBLL();
-		gerentebll.deleteGerente(gerente);
+		UsuarioBLL usuariobll = new UsuarioBLL();
+		usuariobll.deleteUsuario(usuario);
 		
-		System.out.println("Consultando o gerente no Sistema...");
-		ArrayList gerentes = gerentebll.selectGerente(gerente.getGernome());
+		System.out.println("Consultando o usuário no Sistema...");
+		ArrayList usuarios = usuariobll.selectUsuario(usuario.getUsuLogin());
 		
-		Assert.assertTrue(gerentes.isEmpty());
-		System.out.println("Gerente excluído com sucesso ");
+		Assert.assertTrue(usuarios.isEmpty());
+		System.out.println("Usuário excluído com sucesso ");
 	}
 }

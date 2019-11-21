@@ -19,9 +19,9 @@ public class ClienteDAO {
 		
 				ps = conn.prepareStatement(query);
 		
-				ps.setString(1, cli.getClinome());
-				ps.setString(2, cli.getClitelefone());
-				ps.setString(3, cli.getCliemail());
+				ps.setString(1, cli.getClinome());				
+				ps.setString(2, cli.getCliemail());
+				ps.setString(3, cli.getClitelefone());
 				ps.setString(4, cli.getClisenha());
 		
 				if(ps.executeUpdate() != 0) 

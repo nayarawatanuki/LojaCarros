@@ -2,6 +2,7 @@ package view;
 
 
 import javax.swing.JFrame;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
@@ -45,6 +46,8 @@ public class Funcionarios {
 		JLabel lblTipoDeAcesso = new JLabel("Tipo de acesso:");
 		
 		JComboBox cbAcesso = new JComboBox();
+		cbAcesso.setModel(new DefaultComboBoxModel(new String[] {null, "Gerente", "Fucionario"}));
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -93,7 +96,7 @@ public class Funcionarios {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Menu();
+				//new Menu();
 				frame.dispose();
 			}
 		});
